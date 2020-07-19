@@ -101,7 +101,8 @@
 export default {
   name: "Contact",
   components: {},
-  created() {},
+  created() {
+  },
   mounted() {
     this.$store.state.routeName = "Contact";
   }
