@@ -1,31 +1,33 @@
 <template>
-    <div class="best-selling-products">
-        <p class="title">Best Selling Products</p>
-        <div class="logo-leaf">
-            <img src="../../assets/images/logo-leaf-new.png" alt="">
-        </div>
-        <div class="product-section" v-for="(item, i) in items" :key="i">
-            <div class="product-img-sec">
-                <img :src="item.src" alt="">
-            </div>
-            <div class="product-txt-btn">
-                <p>{{ item.details }}</p>
-                <div class="learn-more-btn">
-                    <a href="https://hemplivesmatter.com/products/" target="_blank">
-                        <span class="elementor-button-text">Learn More</span>
-                    </a>
-                </div>
-            </div>
-            
-        </div>
+  <div class="best-selling-products">
+    <p class="title">Best Selling Products</p>
+    <div class="logo-leaf">
+      <img src="../../assets/images/logo-leaf-new.png" alt />
     </div>
+    <div class="product-section" v-for="(item, i) in items" :key="i">
+      <div class="product-img-sec">
+        <img :src="item.src" alt />
+      </div>
+      <div class="product-txt-btn">
+        <p>{{ item.details }}</p>
+        <div class="learn-more-btn">
+          <a href="https://hemplivesmatter.com/products/" target="_blank">
+            <span class="elementor-button-text">Learn More</span>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="leaf-free">
+      <img src="../../assets/images/leaf-free-img.png" alt />
+    </div>
+  </div>
 </template>
 
 <script>
 export default {
-    name: 'Best Selling Products',
-    data() {
-        return {
+  name: "Best Selling Products",
+  data() {
+    return {
       items: [
         {
           src: require("../../assets/images/productsHempGummies-orvmua8mk78logs7zk2mm68out4rh8pcy5tl451rt4.png"),
@@ -44,60 +46,60 @@ export default {
           details: "Name of the image"
         }
       ]
-        }
-    },
-    created() {},
-    mounted() {},
-    methods: {}
-}
+    };
+  },
+  created() {},
+  mounted() {},
+  methods: {}
+};
 </script>
 
 <style scoped>
 .best-selling-products {
-    text-align: center;
+  text-align: center;
+  padding: 100px 0 0px;
+  background: #fff;
 }
 .title {
-    font-size: 34px;
-    font-weight: bold;
+  font-size: 34px;
+  font-weight: bold;
 }
 .logo-leaf {
-    margin: 30px 0 0;
+  margin: 30px 0 0;
 }
 .product-section {
-    width: 22%;
-    display: inline-block;
-    margin: 50px 20px;
-}
-.product-img-sec {
-
+  width: 22%;
+  display: inline-block;
+  margin: 50px 20px;
 }
 .product-img-sec img {
-    width: 280px;
-    height: 280px;
-
-}
-.product-txt-btn {
+  max-width: 280px;
+  max-height: 280px;
 }
 .product-txt-btn p {
-    font-family: "Lato", Sans-serif;
-    font-size: 18px;
-    font-weight: 700;
-    margin: 16px 0 20px;
+  font-family: "Lato", Sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  margin: 16px 0 20px;
 }
 .learn-more-btn {
-    padding: 16px 0;
+  padding: 16px 0;
 }
 .learn-more-btn a {
-    background: #6BB038;
-    padding: 15px 30px;
-    border-radius: 30px;
-    color: #fff;
-    font-weight: bold;
-    text-decoration: none;
-    font-size: 16px;
-    font-family: Arial, Helvetica, sans-serif;
+  background: #6bb038;
+  padding: 15px 30px;
+  border-radius: 30px;
+  color: #fff;
+  font-weight: bold;
+  text-decoration: none;
+  font-size: 16px;
+  font-family: Arial, Helvetica, sans-serif;
 }
 .learn-more-btn a:hover {
-    background-color: #5D9B30;
+  background-color: #5d9b30;
+}
+.leaf-free {
+  padding: 10px 0 0 20%;
+  background: #f8f6f3;
 }
 </style>
