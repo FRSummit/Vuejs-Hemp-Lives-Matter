@@ -29,6 +29,16 @@ Vue.use(VueRouter)
     path: '/contact',
     name: 'Contact',
     component: () => import('../views/Contact.vue')
+  },
+  {
+    path: '/admin/registration',
+    name: 'Sign up',
+    component: () => import('../views/Signup.vue')
+  },
+  {
+    path: '/admin/login',
+    name: 'Login',
+    component: () => import('../views/Signin.vue')
   }
 ]
 
