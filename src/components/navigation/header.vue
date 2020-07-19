@@ -21,6 +21,14 @@
           <router-link to="/contact" class="router-link contact">Contact</router-link>
         </li>
       </ul>
+      <ul v-if="userIsAuthenticated" class="auth-sec">
+        <li>
+          <router-link to="/admin/registration" class="router-link">New User Signup</router-link>
+        </li>
+        <li @click="logout">
+          <router-link to="/" class="router-link">Logout</router-link>
+        </li>
+      </ul>
     </div>
   </div>
 </template>
@@ -30,17 +38,15 @@ export default {
   name: "Header",
   data() {
     return {
+      userIsAuthenticated: false,
       componentName: null
     };
   },
   created() {
-    //   document.querySelector('.router-link.home').classList.add('active')
-  },
-  mounted() {
-    //   console.log(this.$route.name)
-  },
-  updated() {
-    //   console.log(this.$route.name)
+    const usrAuth = localStorage.getItem("admin_info_hlm");
+    if (usrAuth) {
+      this.userIsAuthenticated = JSON.parse(usrAuth).auth_hlm;
+    }
   },
   methods: {
       navClick(routeName) {
@@ -76,6 +82,10 @@ export default {
             //     console.log('4')
             //       break
         //   }
+      },
+      logout() {
+        localStorage.removeItem('admin_info_hlm')
+        window.location.reload()
       }
   }
 };
@@ -83,8 +93,6 @@ export default {
 
 <style scoped>
 .header {
-  /* position: absolute;
-    top: 0; */
   height: 70px;
   width: 100%;
   padding: 20px 40px;
@@ -96,7 +104,7 @@ export default {
 .title {
   color: #000;
   text-decoration: none;
-  font-size: 26px;
+  font-size: 30px;
   font-weight: bold;
 }
 .menu-section {
@@ -104,6 +112,13 @@ export default {
   float: right;
 }
 .menu-section ul {
+  display: inline-block;
+}
+.menu-section ul.auth-sec li {
+  padding: 0px 10px;
+}
+.menu-section ul.auth-sec a {
+  font-size: 16px !important;
 }
 .menu-section ul li {
   list-style-type: none;

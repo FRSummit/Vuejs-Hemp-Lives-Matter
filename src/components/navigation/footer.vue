@@ -106,8 +106,6 @@ export default {
 
 <style scoped>
 .footer {
-  /* position: absolute;
-    bottom: 0; */
   background: #001524;
   color: #fff;
 }
