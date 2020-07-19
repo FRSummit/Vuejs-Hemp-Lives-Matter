@@ -20,6 +20,7 @@ export default {
 <style>
 #app {
     font-family: sans-serif;
+    background: #F8F6F3;
 }
 .v-application--wrap {
     min-height: auto !important;
