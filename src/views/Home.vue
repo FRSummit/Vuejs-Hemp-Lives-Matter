@@ -63,6 +63,8 @@
     </div>
 
     <!-- Section 3 - Best Selling Products -->
+    <BestSellingProducts />
+    <CBDProducts />
 
     <!-- Section 4 - Banner (Get A Free Sample Today!) -->
     <div class="section-four-free-sample">
@@ -81,8 +83,10 @@
       </div>
 
     <!-- Section 5 - Trending Products -->
+    <TrendingProducts />
 
     <!-- Section 6 - Customers Reviews -->
+    <CustomersReviews />
 
     <!-- Section 7 - Company logo -->
     <div class="company-logo-section">
@@ -96,10 +100,18 @@
 </template>
 
 <script>
+import BestSellingProducts from '../components/home/BestSellingProducts'
+import CBDProducts from '../components/home/CBDProducts'
+import TrendingProducts from '../components/home/TrendingProducts'
+import CustomersReviews from '../components/home/CustomersReviews'
 
 export default {
   name: 'Home',
   components: {
+    BestSellingProducts,
+    CBDProducts,
+    TrendingProducts,
+    CustomersReviews
   },
   created() {
 
