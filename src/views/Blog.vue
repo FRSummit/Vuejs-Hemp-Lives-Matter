@@ -6,7 +6,15 @@
 
 <script>
 export default {
-name: 'Blog'
+  name: 'Blog',
+  components: {
+  },
+  created() {
+
+  },
+  mounted() {
+    this.$store.state.routeName = 'Blog'
+  }
     
 }
 </script>

@@ -5,20 +5,20 @@
     </div>
     <div class="menu-section">
       <ul>
-        <li>
-          <router-link to="/" class="router-link">Home</router-link>
+        <li @click="navClick('Home')">
+          <router-link to="/" class="router-link home active">Home</router-link>
         </li>
-        <li>
-          <router-link to="/about" class="router-link">About</router-link>
+        <li @click="navClick('About')">
+          <router-link to="/about" class="router-link about">About</router-link>
         </li>
-        <li>
-          <router-link to="/product" class="router-link">Product</router-link>
+        <li @click="navClick('Product')">
+          <router-link to="/product" class="router-link product">Product</router-link>
         </li>
-        <li>
-          <router-link to="/blog" class="router-link">Blog</router-link>
+        <li @click="navClick('Blog')">
+          <router-link to="/blog" class="router-link blog">Blog</router-link>
         </li>
-        <li>
-          <router-link to="/contact" class="router-link">Contact</router-link>
+        <li @click="navClick('Contact')">
+          <router-link to="/contact" class="router-link contact">Contact</router-link>
         </li>
       </ul>
     </div>
@@ -34,13 +34,49 @@ export default {
     };
   },
   created() {
-
+    //   document.querySelector('.router-link.home').classList.add('active')
   },
   mounted() {
-      console.log(this.$route.name)
+    //   console.log(this.$route.name)
   },
   updated() {
-      console.log(this.$route.name)
+    //   console.log(this.$route.name)
+  },
+  methods: {
+      navClick(routeName) {
+            console.log(routeName)
+            for(let i=0; i<document.querySelectorAll('.router-link').length; i++) {
+                console.log('loop')
+                document.querySelectorAll('.router-link')[i].classList.remove('active');
+            }
+            // if(routeName === 'Home')  document.querySelectorAll('.router-link')[0].classList.add('active');
+            // else if(routeName === 'About')  document.querySelectorAll('.router-link')[1].classList.add('active');
+            // else if(routeName === 'Product')  document.querySelectorAll('.router-link')[2].classList.add('active');
+            // else if(routeName === 'Blog')  document.querySelectorAll('.router-link')[3].classList.add('active');
+            // else if(routeName === 'Contact')  document.querySelectorAll('.router-link')[4].classList.add('active');
+        //   switch(routeName) {
+        //       case 'Home':
+        //           document.querySelector('.router-link')[0].classList.add('active')
+        //         console.log('0')
+        //           break
+        //       case 'About':
+        //           document.querySelectorAll('.router-link')[1].classList.add('active')
+        //         console.log('1')
+        //           break
+        //       case 'Product':
+        //           document.querySelectorAll('.router-link')[2].classList.add('active')
+        //         console.log('2')
+        //           break
+            //   case 'Blog':
+            //       document.querySelectorAll('.router-link')[3].classList.add('active')
+            //     console.log('3')
+            //       break
+            //   case 'Contact':
+            //       document.querySelectorAll('.router-link')[4].classList.add('active')
+            //     console.log('4')
+            //       break
+        //   }
+      }
   }
 };
 </script>
@@ -81,6 +117,9 @@ export default {
   font-weight: bold;
 }
 .menu-section ul li .router-link:hover {
+  color: #8bc34a;
+}
+.menu-section ul li .router-link.active {
   color: #8bc34a;
 }
 </style>

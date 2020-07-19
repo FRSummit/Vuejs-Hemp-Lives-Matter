@@ -6,8 +6,15 @@
 
 <script>
 export default {
-name: 'Product'
-    
+  name: 'Product',
+  components: {
+  },
+  created() {
+
+  },
+  mounted() {
+    this.$store.state.routeName = 'Product'
+  }
 }
 </script>
 

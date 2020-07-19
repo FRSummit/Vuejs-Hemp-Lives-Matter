@@ -6,8 +6,15 @@
 
 <script>
 export default {
-name: 'Contact'
-    
+  name: 'Contact',
+  components: {
+  },
+  created() {
+
+  },
+  mounted() {
+    this.$store.state.routeName = 'Contact'
+  }
 }
 </script>
 

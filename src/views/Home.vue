@@ -9,6 +9,12 @@
 export default {
   name: 'Home',
   components: {
+  },
+  created() {
+
+  },
+  mounted() {
+    this.$store.state.routeName = 'Home'
   }
 }
 </script>
