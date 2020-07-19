@@ -4,6 +4,7 @@
       <h1>About Us</h1>
     </div>
 
+    <!-- Top -->
     <div class="section-one">
       <div class="description-section">
         <div class="desc-inner-title">
@@ -24,6 +25,7 @@
       </div>
     </div>
 
+    <!-- Middle banner -->
     <div class="section-two">
       <div class="section-two-inner">
         <div class="speaker-section">
@@ -43,6 +45,7 @@
       </div>
     </div>
 
+    <!-- Carosel & Certificate -->
     <div class="section-three">
       <div class="img-section">
         <div class="img-inner">
@@ -64,10 +67,73 @@
           <span class="s3-writer">Ceally S., Missouri</span>
         </div>
       </div>
+
+      <!-- Certificate section -->
       <div class="desc-section">
-        <v-carousel :show-arrows="false">
-          <v-carousel-item v-for="(item,i) in items" :key="i" :src="item.src"></v-carousel-item>
-        </v-carousel>
+        <div class="certificate-section">
+          <div class="icon">
+            <img src="../assets/images/US-Hemp-Authority-Logo_white.png" alt />
+          </div>
+          <div class="details">
+            <p class="certificate">Certified Products</p>
+            <p
+              class="certificate-view"
+            >Click the seal to view our awarded Hemp Authority Certification</p>
+          </div>
+        </div>
+        <div class="promice-section">
+          <p>We Deal With Various Quality Organic Products!</p>
+        </div>
+        <div class="product-section">
+          <div class="product-list">
+            <ul>
+              <li>
+                <i class="fa fa-check-circle" aria-hidden="true"></i>
+                <span>Organic Methods</span>
+              </li>
+              <li>
+                <i class="fa fa-check-circle" aria-hidden="true"></i>
+                <span>Gluten Free</span>
+              </li>
+              <li>
+                <i class="fa fa-check-circle" aria-hidden="true"></i>
+                <span>Vegan</span>
+              </li>
+              <li>
+                <i class="fa fa-check-circle" aria-hidden="true"></i>
+                <span>Cruelty Free</span>
+              </li>
+              <li>
+                <i class="fa fa-check-circle" aria-hidden="true"></i>
+                <span>Non GMO</span>
+              </li>
+            </ul>
+            <ul>
+              <li>
+                <i class="fa fa-check-circle" aria-hidden="true"></i>
+                <span>Arabica Beans</span>
+              </li>
+              <li>
+                <i class="fa fa-check-circle" aria-hidden="true"></i>
+                <span>Chaga Mushrooms</span>
+              </li>
+              <li>
+                <i class="fa fa-check-circle" aria-hidden="true"></i>
+                <span>No Artificial Sweeteners</span>
+              </li>
+              <li>
+                <i class="fa fa-check-circle" aria-hidden="true"></i>
+                <span>No Artificial Coloring</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="btn-section">
+          <a href="https://hemplivesmatter.com/products/" target="_blank">
+            <i aria-hidden="true" class="fas fa-shopping-cart"></i>
+            <span class="elementor-button-text">Start Shopping</span>
+          </a>
+        </div>
       </div>
     </div>
   </div>
@@ -199,11 +265,81 @@ export default {
 .section-three .s3-text {
   font-size: 16px;
   font-weight: bold;
-    line-height: 1.5;
+  line-height: 1.5;
 }
 .section-three .s3-writer {
   font-size: 20px;
   font-weight: bold;
   line-height: 3;
+}
+
+/*  */
+.certificate-section {
+  width: 90%;
+  background: #ff7501;
+  text-align: left;
+}
+.certificate-section .icon {
+  width: 120px;
+  display: inline-block;
+}
+.certificate-section .icon img {
+  width: 120px;
+}
+.certificate-section .details {
+  width: 65%;
+  display: inline-block;
+  vertical-align: top;
+  color: #fff;
+  padding: 10px 0px;
+  margin-left: 30px;
+}
+.certificate-section .certificate {
+  font-size: 24px;
+  font-weight: bold;
+  text-align: left;
+}
+.certificate-section .certificate-view {
+  font-size: 20px;
+  text-align: left;
+  margin-top: 20px;
+}
+.desc-section .promice-section p {
+  font-size: 34px;
+  text-align: left;
+  font-family: Merriweather, serif;
+  font-weight: bold;
+  margin: 20px 0;
+}
+.desc-section ul {
+  display: inline-block;
+  width: 50%;
+  vertical-align: top;
+  list-style-type: none;
+  text-align: left;
+  line-height: 2;
+  font-size: 20px;
+  font-weight: bold;
+}
+.desc-section ul li .fa-check-circle {
+  color: #8bc34a;
+}
+.desc-section ul li span {
+  margin-left: 10px;
+}
+.desc-section .btn-section {
+    margin: 30px 0;
+    text-align: left;
+}
+.desc-section .btn-section a {
+    background: #8BC34A;
+    padding: 15px 40px;
+    border-radius: 30px;
+    color: #fff;
+    text-decoration: none;
+    font-size: 16px;
+}
+.desc-section .btn-section a span {
+  margin-left: 15px;
 }
 </style>
