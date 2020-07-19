@@ -5,19 +5,19 @@
     </div>
     <div class="menu-section">
       <ul>
-        <li @click="navClick('Home')">
-          <router-link to="/" class="router-link home active">Home</router-link>
+        <li>
+          <router-link to="/" class="router-link home">Home</router-link>
         </li>
-        <li @click="navClick('About')">
+        <li>
           <router-link to="/about" class="router-link about">About</router-link>
         </li>
-        <li @click="navClick('Product')">
+        <li>
           <router-link to="/product" class="router-link product">Product</router-link>
         </li>
-        <li @click="navClick('Blog')">
+        <li>
           <router-link to="/blog" class="router-link blog">Blog</router-link>
         </li>
-        <li @click="navClick('Contact')">
+        <li>
           <router-link to="/contact" class="router-link contact">Contact</router-link>
         </li>
       </ul>
@@ -49,40 +49,6 @@ export default {
     }
   },
   methods: {
-      navClick(routeName) {
-            console.log(routeName)
-            for(let i=0; i<document.querySelectorAll('.router-link').length; i++) {
-                console.log('loop')
-                document.querySelectorAll('.router-link')[i].classList.remove('active');
-            }
-            // if(routeName === 'Home')  document.querySelectorAll('.router-link')[0].classList.add('active');
-            // else if(routeName === 'About')  document.querySelectorAll('.router-link')[1].classList.add('active');
-            // else if(routeName === 'Product')  document.querySelectorAll('.router-link')[2].classList.add('active');
-            // else if(routeName === 'Blog')  document.querySelectorAll('.router-link')[3].classList.add('active');
-            // else if(routeName === 'Contact')  document.querySelectorAll('.router-link')[4].classList.add('active');
-        //   switch(routeName) {
-        //       case 'Home':
-        //           document.querySelector('.router-link')[0].classList.add('active')
-        //         console.log('0')
-        //           break
-        //       case 'About':
-        //           document.querySelectorAll('.router-link')[1].classList.add('active')
-        //         console.log('1')
-        //           break
-        //       case 'Product':
-        //           document.querySelectorAll('.router-link')[2].classList.add('active')
-        //         console.log('2')
-        //           break
-            //   case 'Blog':
-            //       document.querySelectorAll('.router-link')[3].classList.add('active')
-            //     console.log('3')
-            //       break
-            //   case 'Contact':
-            //       document.querySelectorAll('.router-link')[4].classList.add('active')
-            //     console.log('4')
-            //       break
-        //   }
-      },
       logout() {
         localStorage.removeItem('admin_info_hlm')
         window.location.reload()

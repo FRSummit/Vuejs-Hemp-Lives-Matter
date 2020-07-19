@@ -113,7 +113,6 @@ export default {
   font-size: 30px;
   text-align: center;
   margin: 30px 0;
-  /* font-family: "Merriweather", serif; */
   font-weight: bold;
 }
 .contact-details {
