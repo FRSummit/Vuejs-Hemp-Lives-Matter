@@ -27,7 +27,8 @@
         <p>Become a member today and save.</p>
         <div class="learn-more-btn">
           <a href="https://hemplivesmatter.com/products/" target="_blank">
-            <span class="elementor-button-text">Learn More</span>
+            <span class="elementor-button-text">Shop Now</span>
+            <i aria-hidden="true" class="fas fa-arrow-right"></i>
           </a>
         </div>
       </div>
@@ -160,5 +161,8 @@ export default {
   font-size: 22px;
   font-weight: bold;
   color: #c4ccc6;
+}
+.fa-arrow-right {
+  margin-left: 10px;
 }
 </style>
