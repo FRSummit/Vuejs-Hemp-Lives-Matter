@@ -13,7 +13,7 @@ name: 'Footer'
 
 <style scoped>
 .footer {
-    position: absolute;
-    bottom: 0;
+    /* position: absolute;
+    bottom: 0; */
 }
 </style>

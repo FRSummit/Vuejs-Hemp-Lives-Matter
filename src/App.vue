@@ -9,7 +9,6 @@
 <script>
 import Header from './components/navigation/header'
 import Footer from './components/navigation/footer'
-
 export default {
   components: {
     Header,
@@ -18,5 +17,8 @@ export default {
 }
 </script>
 
-<style scoped>
+<style>
+#app {
+    font-family: sans-serif;
+}
 </style>
