@@ -2,7 +2,7 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
 import store from './store'
-import vuetify from './plugins/vuetify';
+import vuetify from './plugins/vuetify'
 import '@fortawesome/fontawesome-free/css/all.css'
 import '@fortawesome/fontawesome-free/js/all.js'
 import firebase from 'firebase'
@@ -17,7 +17,6 @@ var firebaseConfig = {
   appId: "1:521580246006:web:95d34f54843593f3088dd7",
   measurementId: "G-MLR86DFYWK"
 };
-// Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 window.firebase = firebase;
 

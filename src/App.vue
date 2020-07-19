@@ -21,4 +21,8 @@ export default {
 #app {
     font-family: sans-serif;
 }
+.v-application--wrap {
+    min-height: auto !important;
+    padding: 50px 0;
+}
 </style>
