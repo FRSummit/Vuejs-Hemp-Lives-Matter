@@ -19,7 +19,8 @@ export default {
 
 <style>
 #app {
-    font-family: sans-serif;
+    /* font-family: sans-serif; */
+    font-family: serif;
     background: #F8F6F3;
 }
 .v-application--wrap {

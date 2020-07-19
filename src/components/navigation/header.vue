@@ -93,7 +93,7 @@ export default {
 }
 .menu-section ul li .router-link {
   color: #000;
-  font-size: 26px;
+  font-size: 22px;
   text-decoration: none;
   font-weight: bold;
 }
