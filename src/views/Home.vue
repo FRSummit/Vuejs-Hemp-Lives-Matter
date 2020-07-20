@@ -226,7 +226,7 @@ export default {
 .section-four-free-sample {
     width: 100%;
     margin: 40px auto 0;
-    padding: 60px 80px;
+    padding: 60px 120px;
     background: #1C2F3C;
     color: #fff;
 }
@@ -242,7 +242,7 @@ export default {
 }
 .section-four-free-sample .btn-sec{
     margin: 0 0;
-    text-align: left;
+    text-align: right;
 }
 .section-four-free-sample .btn-sec a {
     background: #8BC34A;

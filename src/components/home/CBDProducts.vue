@@ -54,6 +54,8 @@ export default {
 .cbd-card {
     display: inline-block;
     width: 25%;
+    height: 490px;
+    vertical-align: middle;
     background: #fff;
     margin: 0 30px;
     border-radius: 10px;
