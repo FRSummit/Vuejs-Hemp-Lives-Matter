@@ -66,6 +66,7 @@ export default {
   created() {
     const blogDetails = localStorage.getItem("hlm_blog_details");
     this.blogTitle = JSON.parse(blogDetails).hlm_blog_title
+    window.scrollTo(0,0);
   }
 };
 </script>
