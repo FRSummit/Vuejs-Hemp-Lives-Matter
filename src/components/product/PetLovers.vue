@@ -64,6 +64,7 @@ export default {
   margin: 0 auto;
   width: 40%;
   vertical-align: top;
+  margin-top: -40px;
 }
 .product-img-sec {
   width: 100%;
