@@ -1,17 +1,27 @@
 <template>
   <div class="blog-index">
-    <div class="blog-section" v-for="(item, i) in items" :key="i">
-      <span class="num">
+    <!-- Add Blog section -->
+    <div class="add-new-btn" v-if="userIsAuthenticated">
+      <a @click="addNewBlog" target="_blank">
+        <span class="elementor-button-text">{{ addNewBlogIndex }}</span>
+      </a>
+    </div>
+    <!-- Add Blog Component -->
+    <NewIndexBlogItem v-if="createNewBlogIndex" />
+
+    <!-- Blog Index -->
+    <div class="blog-section" v-for="(item, i) in indexBlogList" :key="i">
+      <!-- <span class="num">
         <span class="dsq-postid">{{ i + 1 }}</span>
-      </span>
+      </span> -->
       <div class="blog-img-sec">
-        <img :src="item.src" alt />
+        <img :src="item.img1_url" alt />
       </div>
       <div class="blog-txt-btn">
         <p class="title">{{ item.title }}</p>
-        <p class="description">{{ item.description }}</p>
+        <p class="description">{{ item.summery }}</p>
         <div class="learn-more-btn">
-          <a @click="readBlog(item.title, i)" target="_blank">
+          <a @click="readBlog(i)" target="_blank">
             <span class="elementor-button-text">Read More</span>
           </a>
         </div>
@@ -21,77 +31,59 @@
 </template>
 
 <script>
-// import router from '../../router';
+import NewIndexBlogItem from "./create/AddBlogForIndex";
+import firebase from "firebase";
+
 export default {
-  name: "Blog Index",
+  // name: "Blog Index",
+  components: {
+    NewIndexBlogItem
+  },
   data() {
     return {
-      items: [
-        {
-          src: require("../../assets/images/productsHempGummies-orvmua8mk78logs7zk2mm68out4rh8pcy5tl451rt4.png"),
-          title: "Name of the image 1",
-          description:
-            "No, despite its name, the Peter Principle doesn’t have anything to do with Peter Parker, though you could say that it relates to great power and great responsibility. At least tangentially..."
-        },
-        {
-          src: require("../../assets/images/BathBox6PackOpen-orvmuxqlb24rqpu36c8auib7pfwxtoande4q422xhk.png"),
-          title: "Name of the image 2",
-          description:
-            "No, despite its name, the Peter Principle doesn’t have anything to do with Peter Parker, though you could say that it relates to great power and great responsibility. At least tangentially..."
-        },
-        {
-          src: require("../../assets/images/FullSpectrum_allC-orviq22utqbsu63aizhkx2swidq0nj968ia3oatr0o.png"),
-          title: "Name of the image 3",
-          description:
-            "No, despite its name, the Peter Principle doesn’t have anything to do with Peter Parker, though you could say that it relates to great power and great responsibility. At least tangentially..."
-        },
-        {
-          src: require("../../assets/images/valuePackHempworxDirector-orkq5bh2oasr23ijxry6ul5ax4fq5nxhyoeqgy2hoo.png"),
-          title: "Name of the image 4",
-          description:
-            "No, despite its name, the Peter Principle doesn’t have anything to do with Peter Parker, though you could say that it relates to great power and great responsibility. At least tangentially..."
-        },
-        {
-          src: require("../../assets/images/productsHempGummies-orvmua8mk78logs7zk2mm68out4rh8pcy5tl451rt4.png"),
-          title: "Name of the image 5",
-          description:
-            "No, despite its name, the Peter Principle doesn’t have anything to do with Peter Parker, though you could say that it relates to great power and great responsibility. At least tangentially..."
-        },
-        {
-          src: require("../../assets/images/BathBox6PackOpen-orvmuxqlb24rqpu36c8auib7pfwxtoande4q422xhk.png"),
-          title: "Name of the image 6",
-          description:
-            "No, despite its name, the Peter Principle doesn’t have anything to do with Peter Parker, though you could say that it relates to great power and great responsibility. At least tangentially..."
-        },
-        {
-          src: require("../../assets/images/FullSpectrum_allC-orviq22utqbsu63aizhkx2swidq0nj968ia3oatr0o.png"),
-          title: "Name of the image 7",
-          description:
-            "No, despite its name, the Peter Principle doesn’t have anything to do with Peter Parker, though you could say that it relates to great power and great responsibility. At least tangentially..."
-        },
-        {
-          src: require("../../assets/images/valuePackHempworxDirector-orkq5bh2oasr23ijxry6ul5ax4fq5nxhyoeqgy2hoo.png"),
-          title: "Name of the image 8",
-          description:
-            "No, despite its name, the Peter Principle doesn’t have anything to do with Peter Parker, though you could say that it relates to great power and great responsibility. At least tangentially..."
-        },
-        {
-          src: require("../../assets/images/valuePackHempworxDirector-orkq5bh2oasr23ijxry6ul5ax4fq5nxhyoeqgy2hoo.png"),
-          title: "Name of the image 9",
-          description:
-            "No, despite its name, the Peter Principle doesn’t have anything to do with Peter Parker, though you could say that it relates to great power and great responsibility. At least tangentially..."
-        }
-      ]
+      userIsAuthenticated: false,
+      createNewBlogIndex: false,
+      addNewBlogIndex: "Add New",
+      indexBlogList: [],
     };
   },
-  created() {},
+  created() {
+    const usrAuth = localStorage.getItem("admin_info_hlm");
+    if (usrAuth) {
+      this.userIsAuthenticated = JSON.parse(usrAuth).auth_hlm;
+    }
+    // load index blog list
+    firebase.database().ref("index-blog-list").on("value", snapshot => {
+        this.indexBlogList = snapshot.val();
+        // console.log(this.indexBlogList);
+        // console.log(Object.keys(this.indexBlogList));
+        for(let i=0; i<Object.keys(this.indexBlogList).length; i++) {
+          // console.log(Object.keys(this.indexBlogList)[i])
+          // console.log(this.indexBlogList)
+        }
+      });
+  },
   mounted() {},
   methods: {
-    readBlog(title, key) {
-        console.log(key)
-      let blogDetails = { hlm_blog_title: title };
+    readBlog(id) {
+      console.log(id);
+      let blogDetails = { hlm_blog_id: id };
       localStorage.setItem("hlm_blog_details", JSON.stringify(blogDetails));
-      this.$router.push('/blog-details')
+      this.$router.push("/blog-details");
+    },
+    addNewBlog() {
+      if (!this.createNewBlogIndex) {
+        this.createNewBlogIndex = true;
+        this.addNewBlogIndex = "Close";
+        document.querySelector(".add-new-btn a").style.background = "red";
+        document.querySelector(".add-new-btn a").style.color = "#fff";
+      } else if (this.createNewBlogIndex) {
+        this.createNewBlogIndex = false;
+        this.addNewBlogIndex = "Add New";
+        document.querySelector(".add-new-btn a").style.background =
+          "transparent";
+        document.querySelector(".add-new-btn a").style.color = "#000";
+      }
     }
   }
 };
@@ -183,7 +175,8 @@ export default {
   bottom: 10px;
   left: 40%;
 }
-.learn-more-btn a {
+.learn-more-btn a,
+.add-new-btn a {
   color: #000;
   padding: 10px 12px;
   display: inline-block;
@@ -193,9 +186,23 @@ export default {
   text-decoration: none;
   text-transform: uppercase;
   border: 1px #000 solid;
+  text-align: center;
+  border-radius: 2px;
+  font-weight: bold;
+  cursor: pointer;
 }
 .learn-more-btn a:hover {
   background: #3c4e86;
   color: #fff;
+}
+.add-new-btn {
+  text-align: right;
+  margin: 0 40px;
+}
+.add-new-btn a {
+  border-radius: 6px;
+  width: 10%;
+  font-weight: bold;
+  cursor: pointer;
 }
 </style>
