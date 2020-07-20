@@ -21,7 +21,7 @@
         <p class="title">{{ item.title }}</p>
         <p class="description">{{ item.summery }}</p>
         <div class="learn-more-btn">
-          <a @click="readBlog(i)" target="_blank">
+          <a @click="readBlog(i, item.title)" target="_blank">
             <span class="elementor-button-text">Read More</span>
           </a>
         </div>
@@ -65,9 +65,9 @@ export default {
   },
   mounted() {},
   methods: {
-    readBlog(id) {
+    readBlog(id, title) {
       console.log(id);
-      let blogDetails = { hlm_blog_id: id };
+      let blogDetails = { hlm_blog_id: id , hlm_blog_title: title };
       localStorage.setItem("hlm_blog_details", JSON.stringify(blogDetails));
       this.$router.push("/blog-details");
     },

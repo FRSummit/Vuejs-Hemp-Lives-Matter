@@ -7,7 +7,7 @@
       </router-link>
     </div>
     <!-- Blog Content -->
-    <h1 class="title">{{ blogId }}</h1>
+    <h1 class="title">{{ blogTitle }}</h1>
     <div class="blog-section">
       <div class="blog-inner" v-for="(item, i) in blogDetails" :key="i">
         <div class="blog-title-sec">
@@ -112,7 +112,8 @@ export default {
   data() {
     return {
       userIsAuthenticated: false,
-      blogId: "null",
+      blogId: null,
+      blogTitle: null,
       blogDetails: [],
       addNewBlogIndex: "Add New Content",
       createNewBlogIndex: false,
@@ -134,6 +135,7 @@ export default {
     // Get blog id from localstorage which passed from blog index page
     const blogDetails = localStorage.getItem("hlm_blog_details");
     this.blogId = JSON.parse(blogDetails).hlm_blog_id;
+    this.blogTitle = JSON.parse(blogDetails).hlm_blog_title;
     window.scrollTo(0, 0);
 
     // Get The blog
@@ -253,7 +255,7 @@ export default {
   font-size: 3.125em;
   text-align: center;
   font-weight: 300;
-  margin-bottom: 30px;
+  margin: 30px 0;
 }
 .blog-section {
   border: 2px solid #cfcfcf;
