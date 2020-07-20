@@ -32,7 +32,7 @@
       </a>
     </div>
     <!-- Content's new input form -->
-    <div class="add-content" v-if="userIsAuthenticated">
+    <div class="add-content" v-if="userIsAuthenticated && createNewBlogIndex">
       <v-card class="elevation-12 v-card-edit">
         <v-toolbar color="primary" dark flat>
           <v-spacer />
@@ -41,27 +41,6 @@
         </v-toolbar>
         <v-card-text class="v-card-text">
           <v-form @submit.prevent="onSubmit">
-            <!-- title & summery -->
-            <div class="name-field">
-              <label class="field-label">Name of your blog</label>
-              <v-text-field
-                class="field-input"
-                v-model="title"
-                id="title"
-                placeholder="Name of your blog"
-                type="text"
-              />
-            </div>
-            <div class="name-field">
-              <label class="field-label">Short summery</label>
-              <v-text-field
-                class="field-input"
-                v-model="summery"
-                id="summery"
-                placeholder="Short summery"
-                type="text"
-              />
-            </div>
 
             <!-- img 1 -->
             <div class="name-field">
@@ -84,10 +63,32 @@
                 </p>
               </div>
               <div v-if="imageData!=null">
-                <img class="preview" :src="picture" style="width: 200px;" />
+                <img class="preview" :src="picture" />
                 <br />
                 <span @click="onUpload" class="img-up-btn">Upload</span>
               </div>
+            </div>
+
+            <!-- title & summery -->
+            <div class="name-field">
+              <label class="field-label">Title</label>
+              <v-text-field
+                class="field-input"
+                v-model="title"
+                id="title"
+                placeholder="Title (Optional)"
+                type="text"
+              />
+            </div>
+            <div class="name-field">
+              <label class="field-label">Short summery</label>
+              <v-text-field
+                class="field-input"
+                v-model="summery"
+                id="summery"
+                placeholder="Short summery"
+                type="text"
+              />
             </div>
 
             <!-- submit section -->
@@ -113,7 +114,15 @@ export default {
       userIsAuthenticated: false,
       blogId: "null",
       blogDetails: [],
-      addNewBlogIndex: "Add New Content"
+      addNewBlogIndex: "Add New Content",
+      createNewBlogIndex: false,
+      // adding content  for blog
+      title: null,
+      summery: null,
+      img1_url: null, //For image upload
+      picture: null, //For image upload
+      imageData: null, //For image upload
+      uploadValue: 0 //For image upload
     };
   },
   created() {
@@ -128,7 +137,10 @@ export default {
     window.scrollTo(0, 0);
 
     // Get The blog
-    firebase.database().ref("Blog_" + JSON.parse(blogDetails).hlm_blog_id).on("value", snapshot => {
+    firebase
+      .database()
+      .ref("Blog_" + JSON.parse(blogDetails).hlm_blog_id)
+      .on("value", snapshot => {
         this.blogDetails = snapshot.val();
       });
   },
@@ -149,9 +161,78 @@ export default {
     },
     RemoveBlog() {
       console.log(this.blogId);
-      firebase.database().ref("index-blog-list/" + this.blogId).remove();
-      firebase.database().ref("Blog_" + this.blogId).remove();
+      firebase
+        .database()
+        .ref("index-blog-list/" + this.blogId)
+        .remove();
+      firebase
+        .database()
+        .ref("Blog_" + this.blogId)
+        .remove();
       this.$router.push("/blog");
+    },
+
+    // Adding new content
+    onSubmit() {
+      console.log(this.title + " " + this.summery + " " + this.img1_url);
+      if (
+        this.title === "" ||
+        this.title === null ||
+        this.summery === "" ||
+        this.summery === null
+      ) {
+        console.log("null");
+        if (this.title == "" || this.title === null) {
+          document.getElementById("title").placeholder =
+            "Title must not be empty";
+        }
+        if (this.summery == "" || this.summery === null) {
+          document.getElementById("summery").placeholder =
+            "Summery must not be empty";
+        }
+      } else {
+        firebase
+          .database()
+          .ref('Blog_' + this.blogId)
+          .push({
+            title: this.title,
+            summery: this.summery + "...",
+            img1_url: this.img1_url
+          })
+          .then(data => {
+            this.createBlogForId(data.path.pieces_[1]);
+            console.log(data.path.pieces_[1]);
+          })
+          .catch(error => console.log(error));
+        // window.location.reload();
+      }
+    },
+    onUpload() {
+      //For image upload
+      this.picture = null;
+      const storageRef = firebase.storage().ref(`${this.imageData.name}`).put(this.imageData);
+      storageRef.on(`state_changed`, snapshot => {
+          this.uploadValue = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+      },error => {
+          console.log(error.message);
+      },
+        () => {
+          this.uploadValue = 100;
+          storageRef.snapshot.ref.getDownloadURL().then(url => {
+            this.picture = url;
+            this.img1_url = url;
+            console.log(this.img1_url);
+          });
+          // console.log('This is the link : ' + storageRef.snapshot.ref.getDownloadURL());
+          // console.log(storageRef.snapshot.ref.getDownloadURL().url);
+        }
+      );
+    },
+    previewImage(event) {
+      //For image upload
+      this.uploadValue = 0;
+      this.picture = null;
+      this.imageData = event.target.files[0];
     }
   }
 };
@@ -207,18 +288,13 @@ export default {
 /* Adding new content */
 .blog-list-btn {
   position: absolute;
-  top: 5%;
-  left: 5%;
+    top: 40px;
+    left: 40px;
 }
 .add-new-btn {
   position: absolute;
-  top: 5%;
-  right: 5%;
-}
-.remove-new-btn {
-  position: absolute;
-  top: 10%;
-  right: 5%;
+    top: 40px;
+    right: 40px;
 }
 .add-new-btn a,
 .remove-new-btn a,
@@ -243,5 +319,51 @@ export default {
 }
 .add-new-btn a:nth-child(2):hover {
   background: red;
+}
+.add-content {
+    width: 60%;
+    margin: 0 auto;
+    position: absolute;
+    top: 100px;
+    right: 30px;
+}
+.name-field {
+    text-align: left;
+}
+label {
+    font-size: 20px;
+    font-weight: bold;
+    color: #000;
+}
+.img-sec {
+    width: 30%;
+}
+input {
+    color: #000;
+    margin-left: 10px;
+    width: 30%;
+}
+.img-up-btn, .create-btn {
+    color: #000;
+    padding: 4px 12px;
+    display: inline-block;
+    font-size: 12px;
+    letter-spacing: 1px;
+    text-decoration: none;
+    text-transform: uppercase;
+    border: 2px #000 solid;
+    text-align: center;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+}
+.create-btn {
+    color: #000 !important;
+    padding: 4px 12px !important;
+    background: transparent !important;
+}
+.add-content .preview {
+    width: 200px;
+    height: 200px;
 }
 </style>
