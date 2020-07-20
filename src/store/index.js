@@ -5,7 +5,7 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    routeName: null,
+    blogDetails: null,
   },
   mutations: {
   },

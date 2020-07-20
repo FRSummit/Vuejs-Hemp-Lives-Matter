@@ -11,7 +11,7 @@
         <p class="title">{{ item.title }}</p>
         <p class="description">{{ item.description }}</p>
         <div class="learn-more-btn">
-          <a href="https://hemplivesmatter.com/products/" target="_blank">
+          <a @click="readBlog(item.title, i)" target="_blank">
             <span class="elementor-button-text">Read More</span>
           </a>
         </div>
@@ -21,6 +21,7 @@
 </template>
 
 <script>
+// import router from '../../router';
 export default {
   name: "Blog Index",
   data() {
@@ -28,55 +29,55 @@ export default {
       items: [
         {
           src: require("../../assets/images/productsHempGummies-orvmua8mk78logs7zk2mm68out4rh8pcy5tl451rt4.png"),
-          title: "Name of the image",
+          title: "Name of the image 1",
           description:
             "No, despite its name, the Peter Principle doesn’t have anything to do with Peter Parker, though you could say that it relates to great power and great responsibility. At least tangentially..."
         },
         {
           src: require("../../assets/images/BathBox6PackOpen-orvmuxqlb24rqpu36c8auib7pfwxtoande4q422xhk.png"),
-          title: "Name of the image",
+          title: "Name of the image 2",
           description:
             "No, despite its name, the Peter Principle doesn’t have anything to do with Peter Parker, though you could say that it relates to great power and great responsibility. At least tangentially..."
         },
         {
           src: require("../../assets/images/FullSpectrum_allC-orviq22utqbsu63aizhkx2swidq0nj968ia3oatr0o.png"),
-          title: "Name of the image",
+          title: "Name of the image 3",
           description:
             "No, despite its name, the Peter Principle doesn’t have anything to do with Peter Parker, though you could say that it relates to great power and great responsibility. At least tangentially..."
         },
         {
           src: require("../../assets/images/valuePackHempworxDirector-orkq5bh2oasr23ijxry6ul5ax4fq5nxhyoeqgy2hoo.png"),
-          title: "Name of the image",
+          title: "Name of the image 4",
           description:
             "No, despite its name, the Peter Principle doesn’t have anything to do with Peter Parker, though you could say that it relates to great power and great responsibility. At least tangentially..."
         },
         {
           src: require("../../assets/images/productsHempGummies-orvmua8mk78logs7zk2mm68out4rh8pcy5tl451rt4.png"),
-          title: "Name of the image",
+          title: "Name of the image 5",
           description:
             "No, despite its name, the Peter Principle doesn’t have anything to do with Peter Parker, though you could say that it relates to great power and great responsibility. At least tangentially..."
         },
         {
           src: require("../../assets/images/BathBox6PackOpen-orvmuxqlb24rqpu36c8auib7pfwxtoande4q422xhk.png"),
-          title: "Name of the image",
+          title: "Name of the image 6",
           description:
             "No, despite its name, the Peter Principle doesn’t have anything to do with Peter Parker, though you could say that it relates to great power and great responsibility. At least tangentially..."
         },
         {
           src: require("../../assets/images/FullSpectrum_allC-orviq22utqbsu63aizhkx2swidq0nj968ia3oatr0o.png"),
-          title: "Name of the image",
+          title: "Name of the image 7",
           description:
             "No, despite its name, the Peter Principle doesn’t have anything to do with Peter Parker, though you could say that it relates to great power and great responsibility. At least tangentially..."
         },
         {
           src: require("../../assets/images/valuePackHempworxDirector-orkq5bh2oasr23ijxry6ul5ax4fq5nxhyoeqgy2hoo.png"),
-          title: "Name of the image",
+          title: "Name of the image 8",
           description:
             "No, despite its name, the Peter Principle doesn’t have anything to do with Peter Parker, though you could say that it relates to great power and great responsibility. At least tangentially..."
         },
         {
           src: require("../../assets/images/valuePackHempworxDirector-orkq5bh2oasr23ijxry6ul5ax4fq5nxhyoeqgy2hoo.png"),
-          title: "Name of the image",
+          title: "Name of the image 9",
           description:
             "No, despite its name, the Peter Principle doesn’t have anything to do with Peter Parker, though you could say that it relates to great power and great responsibility. At least tangentially..."
         }
@@ -85,7 +86,14 @@ export default {
   },
   created() {},
   mounted() {},
-  methods: {}
+  methods: {
+    readBlog(title, key) {
+        console.log(key)
+      let blogDetails = { hlm_blog_title: title };
+      localStorage.setItem("hlm_blog_details", JSON.stringify(blogDetails));
+      this.$router.push('/blog-details')
+    }
+  }
 };
 </script>
 
@@ -108,31 +116,31 @@ export default {
   position: relative;
 }
 .num {
-    border-radius: 100%;
-    background: #3B4D88;
-    border: 2px #2F3E6D solid;
-    text-align: center;
-    color: #fff;
-    font-weight: 300;
-    font-size: 13px;
-    width: 48px;
-    height: 48px;
-    padding: 15px 5px;
-    position: absolute;
-    left: -17px;
-    top: -10px;
-    z-index: 5;
+  border-radius: 100%;
+  background: #3b4d88;
+  border: 2px #2f3e6d solid;
+  text-align: center;
+  color: #fff;
+  font-weight: 300;
+  font-size: 13px;
+  width: 48px;
+  height: 48px;
+  padding: 15px 5px;
+  position: absolute;
+  left: -17px;
+  top: -10px;
+  z-index: 5;
 }
 .num:after {
-    content: "";
-    bottom: -3px;
-    left: 3px;
-    background: url("../../assets/images/comment-arrow.png");
-    width: 10px;
-    height: 12px;
-    position: absolute;
-    display: block;
-    float: left;
+  content: "";
+  bottom: -3px;
+  left: 3px;
+  background: url("../../assets/images/comment-arrow.png");
+  width: 10px;
+  height: 12px;
+  position: absolute;
+  display: block;
+  float: left;
 }
 .blog-img-sec {
   width: 36%;
