@@ -9,11 +9,21 @@
     <!-- Add Blog Component -->
     <NewIndexBlogItem v-if="createNewBlogIndex" />
 
+    <!-- Progressbar -->
+    <v-progress-circular
+      v-if="!progressBar"
+      class="v-progress-circular"
+      :size="70"
+      :width="7"
+      color="purple"
+      indeterminate
+    ></v-progress-circular>
+
     <!-- Blog Index -->
     <div class="blog-section" v-for="(item, i) in indexBlogList" :key="i">
       <!-- <span class="num">
         <span class="dsq-postid">{{ i + 1 }}</span>
-      </span> -->
+      </span>-->
       <div class="blog-img-sec">
         <img :src="item.img1_url" alt />
       </div>
@@ -43,8 +53,9 @@ export default {
     return {
       userIsAuthenticated: false,
       createNewBlogIndex: false,
+      progressBar: false,
       addNewBlogIndex: "Add New",
-      indexBlogList: [],
+      indexBlogList: []
     };
   },
   created() {
@@ -53,21 +64,23 @@ export default {
       this.userIsAuthenticated = JSON.parse(usrAuth).auth_hlm;
     }
     // load index blog list
-    firebase.database().ref("index-blog-list").on("value", snapshot => {
+    firebase
+      .database()
+      .ref("index-blog-list")
+      .on("value", snapshot => {
         this.indexBlogList = snapshot.val();
-        // console.log(this.indexBlogList);
+        this.progressBar = true;
         // console.log(Object.keys(this.indexBlogList));
-        for(let i=0; i<Object.keys(this.indexBlogList).length; i++) {
-          // console.log(Object.keys(this.indexBlogList)[i])
-          // console.log(this.indexBlogList)
-        }
+        // for(let i=0; i<Object.keys(this.indexBlogList).length; i++) {
+        // console.log(Object.keys(this.indexBlogList)[i])
+        // }
       });
   },
   mounted() {},
   methods: {
     readBlog(id, title) {
       console.log(id);
-      let blogDetails = { hlm_blog_id: id , hlm_blog_title: title };
+      let blogDetails = { hlm_blog_id: id, hlm_blog_title: title };
       localStorage.setItem("hlm_blog_details", JSON.stringify(blogDetails));
       this.$router.push("/blog-details");
     },
@@ -98,6 +111,9 @@ export default {
   background: #dbdbdb url("../../assets/images/bg.png") repeat;
   position: relative;
   overflow: hidden;
+}
+.v-progress-circular {
+  color: purple;
 }
 .blog-section {
   width: 45%;

@@ -1,5 +1,16 @@
 <template>
   <div class="blog-details">
+
+    <!-- Progressbar -->
+    <v-progress-circular
+      v-if="!progressBar"
+      class="v-progress-circular"
+      :size="70"
+      :width="7"
+      color="purple"
+      indeterminate
+    ></v-progress-circular>
+
     <!-- Back Button -->
     <div class="blog-list-btn">
       <router-link to="/blog">
@@ -120,6 +131,7 @@ export default {
   data() {
     return {
       userIsAuthenticated: false,
+      progressBar: false,
       blogId: null,
       blogTitle: null,
       blogDetails: [],
@@ -152,6 +164,7 @@ export default {
       .ref("Blog_" + JSON.parse(blogDetails).hlm_blog_id)
       .on("value", snapshot => {
         this.blogDetails = snapshot.val();
+        this.progressBar = true
       });
   },
   methods: {
@@ -265,6 +278,9 @@ export default {
   position: relative;
   overflow: hidden;
   text-align: center;
+}
+.v-progress-circular {
+  color: purple;
 }
 .title {
   font-size: 3.125em;
