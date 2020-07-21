@@ -5,6 +5,9 @@
       <p class="sub-title">Remember to activate with each visit</p>
     </div>
     <div class="product-section" v-for="(item, i) in productList" :key="i">
+      <div class="remove-product-section" @click="removeItem(i)" v-if="userIsAuthenticated">
+        <img src="../../assets/images/trush.png" alt="trush">
+      </div>
       <div class="product-img-sec">
         <img :src="item.img1_url" alt />
       </div>
@@ -151,11 +154,11 @@ export default {
     // Adding new content
     onSubmit() {
       console.log(this.title + " " + this.productUrl + " " + this.img1_url);
-      let dbTableName = '';
-      if(Object.keys(this.productList).length < 8) {
-        dbTableName = "hlm_product_list"
+      let dbTableName = "";
+      if (Object.keys(this.productList).length < 8) {
+        dbTableName = "hlm_product_list";
       } else {
-        dbTableName = "hlm_product_list_2"
+        dbTableName = "hlm_product_list_2";
       }
       if (
         this.title === "" ||
@@ -219,6 +222,12 @@ export default {
       this.uploadValue = 0;
       this.picture = null;
       this.imageData = event.target.files[0];
+    },
+    removeItem(key) {
+      firebase
+        .database()
+        .ref("hlm_product_list/" + key)
+        .remove();
     }
   }
 };
@@ -259,6 +268,17 @@ export default {
   width: 22%;
   display: inline-block;
   margin: 20px;
+  position: relative;
+}
+.remove-product-section {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+}
+.remove-product-section img {
+  width: 20px;
+  height: 20px;
 }
 .product-img-sec {
 }

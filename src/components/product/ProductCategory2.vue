@@ -1,6 +1,9 @@
 <template>
   <div class="product">
     <div class="product-section" v-for="(item, i) in productList" :key="i">
+      <div class="remove-product-section" @click="removeItem(i)" v-if="userIsAuthenticated">
+        <img src="../../assets/images/trush.png" alt="trush" />
+      </div>
       <div class="product-img-sec">
         <img :src="item.img1_url" alt />
       </div>
@@ -23,7 +26,7 @@ export default {
   name: "Product",
   data() {
     return {
-      productList: [],
+      productList: []
     };
   },
   created() {
@@ -34,6 +37,14 @@ export default {
       .on("value", snapshot => {
         this.productList = snapshot.val();
       });
+  },
+  methods: {
+    removeItem(key) {
+      firebase
+        .database()
+        .ref("hlm_product_list_2/" + key)
+        .remove();
+    }
   }
 };
 </script>
@@ -52,6 +63,17 @@ export default {
   width: 22%;
   display: inline-block;
   margin: 20px;
+  position: relative;
+}
+.remove-product-section {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+}
+.remove-product-section img {
+  width: 20px;
+  height: 20px;
 }
 .product-img-sec {
 }
