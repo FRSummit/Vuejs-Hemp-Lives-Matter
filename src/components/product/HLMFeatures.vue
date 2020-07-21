@@ -31,7 +31,7 @@
     </div>
 
     <!-- Add Product Section -->
-    <div class="add-new-btn" v-if="userIsAuthenticated && productListLength<3">
+    <div class="add-new-btn-hlm-products" v-if="userIsAuthenticated && productListLength<3">
       <a @click="addNewProduct">
         <span class="elementor-button-text">{{ addNewBlogIndex }}</span>
       </a>
@@ -127,20 +127,6 @@ export default {
       progressBar: false,
       productListLength: null,
       minFeatureReachBtn: true,
-      items: [
-        {
-          src: require("../../assets/images/productsHempGummies-orvmua8mk78logs7zk2mm68out4rh8pcy5tl451rt4.png"),
-          details: "Name of the image"
-        },
-        {
-          src: require("../../assets/images/BathBox6PackOpen-orvmuxqlb24rqpu36c8auib7pfwxtoande4q422xhk.png"),
-          details: "Name of the image"
-        },
-        {
-          src: require("../../assets/images/FullSpectrum_allC-orviq22utqbsu63aizhkx2swidq0nj968ia3oatr0o.png"),
-          details: "Name of the image"
-        }
-      ]
     };
   },
   created() {
@@ -163,14 +149,14 @@ export default {
       if (!this.createNewBlogIndex) {
         this.createNewBlogIndex = true;
         this.addNewBlogIndex = "Close";
-        document.querySelector(".add-new-btn a").style.background = "red";
-        document.querySelector(".add-new-btn a").style.color = "#fff";
+        document.querySelector(".add-new-btn-hlm-products a").style.background = "red";
+        document.querySelector(".add-new-btn-hlm-products a").style.color = "#fff";
       } else if (this.createNewBlogIndex) {
         this.createNewBlogIndex = false;
         this.addNewBlogIndex = "Add New Featured";
-        document.querySelector(".add-new-btn a").style.background =
+        document.querySelector(".add-new-btn-hlm-products a").style.background =
           "#F3C12A";
-        document.querySelector(".add-new-btn a").style.color = "#000";
+        document.querySelector(".add-new-btn-hlm-products a").style.color = "#000";
       }
     },
     // Adding new content
@@ -253,6 +239,9 @@ export default {
   text-align: center;
   position: relative;
 }
+.v-progress-circular {
+  color: purple;
+}
 .title {
   font-family: "Montserrat", Sans-serif;
   font-size: 36px;
@@ -325,14 +314,14 @@ export default {
 }
 
 /* Add new Button */
-.add-new-btn {
+.add-new-btn-hlm-products {
   text-align: right;
   margin: 0 40px;
   position: absolute;
     top: 16px;
     right: 20px;
 }
-.add-new-btn a {
+.add-new-btn-hlm-products a {
   color: #000;
   padding: 12px 40px;
   display: inline-block;

@@ -340,8 +340,8 @@ export default {
   text-align: right;
   margin: 0 40px;
   position: absolute;
-  top: 80px;
-  left: 70%;
+  top: 10px;
+  right: 20px;
 }
 .add-new-btn a {
   color: #000 !important;
@@ -367,11 +367,11 @@ export default {
 
 /* Form / v-card */
 #product .v-sheet.v-card {
-  width: 80%;
+  width: 60%;
   margin: 0 auto;
   position: absolute;
-  top: 200px;
-  left: 10%;
+  top: 60px;
+  left: 15%;
 }
 .v-card-text {
   width: 100%;
