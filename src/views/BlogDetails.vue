@@ -41,7 +41,6 @@
         </v-toolbar>
         <v-card-text class="v-card-text">
           <v-form @submit.prevent="onSubmit">
-
             <!-- img 1 -->
             <div class="name-field">
               <label class="field-label img-sec">Upload an image:</label>
@@ -82,13 +81,22 @@
             </div>
             <div class="name-field">
               <label class="field-label">Short summery</label>
-              <v-text-field
+              <!-- <v-text-field
                 class="field-input"
                 v-model="summery"
                 id="summery"
                 placeholder="Short summery"
                 type="text"
-              />
+              />-->
+              <v-textarea
+                background-color="grey lighten-2"
+                color="cyan"
+                class="field-input"
+                v-model="summery"
+                id="summery"
+                placeholder="Short summery"
+                type="text"
+              ></v-textarea>
             </div>
 
             <!-- submit section -->
@@ -195,7 +203,7 @@ export default {
       } else {
         firebase
           .database()
-          .ref('Blog_' + this.blogId)
+          .ref("Blog_" + this.blogId)
           .push({
             title: this.title,
             summery: this.summery + "...",
@@ -212,12 +220,19 @@ export default {
     onUpload() {
       //For image upload
       this.picture = null;
-      const storageRef = firebase.storage().ref(`${this.imageData.name}`).put(this.imageData);
-      storageRef.on(`state_changed`, snapshot => {
-          this.uploadValue = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-      },error => {
+      const storageRef = firebase
+        .storage()
+        .ref(`${this.imageData.name}`)
+        .put(this.imageData);
+      storageRef.on(
+        `state_changed`,
+        snapshot => {
+          this.uploadValue =
+            (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+        },
+        error => {
           console.log(error.message);
-      },
+        },
         () => {
           this.uploadValue = 100;
           storageRef.snapshot.ref.getDownloadURL().then(url => {
@@ -290,13 +305,13 @@ export default {
 /* Adding new content */
 .blog-list-btn {
   position: absolute;
-    top: 40px;
-    left: 40px;
+  top: 40px;
+  left: 40px;
 }
 .add-new-btn {
   position: absolute;
-    top: 40px;
-    right: 40px;
+  top: 40px;
+  right: 40px;
 }
 .add-new-btn a,
 .remove-new-btn a,
@@ -323,49 +338,53 @@ export default {
   background: red;
 }
 .add-content {
-    width: 60%;
-    margin: 0 auto;
-    position: absolute;
-    top: 100px;
-    right: 30px;
+  width: 60%;
+  margin: 0 auto;
+  position: absolute;
+  top: 100px;
+  right: 30px;
 }
 .name-field {
-    text-align: left;
+  text-align: left;
 }
 label {
-    font-size: 20px;
-    font-weight: bold;
-    color: #000;
+  font-size: 20px;
+  font-weight: bold;
+  color: #000;
 }
 .img-sec {
-    width: 30%;
+  width: 30%;
 }
 input {
-    color: #000;
-    margin-left: 10px;
-    width: 30%;
+  color: #000;
+  margin-left: 10px;
+  width: 30%;
 }
-.img-up-btn, .create-btn {
-    color: #000;
-    padding: 4px 12px;
-    display: inline-block;
-    font-size: 12px;
-    letter-spacing: 1px;
-    text-decoration: none;
-    text-transform: uppercase;
-    border: 2px #000 solid;
-    text-align: center;
-    border-radius: 6px;
-    font-weight: bold;
-    cursor: pointer;
+.img-up-btn,
+.create-btn {
+  color: #000;
+  padding: 4px 12px;
+  display: inline-block;
+  font-size: 12px;
+  letter-spacing: 1px;
+  text-decoration: none;
+  text-transform: uppercase;
+  border: 2px #000 solid;
+  text-align: center;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
 }
 .create-btn {
-    color: #000 !important;
-    padding: 4px 12px !important;
-    background: transparent !important;
+  color: #000 !important;
+  padding: 4px 12px !important;
+  background: transparent !important;
 }
 .add-content .preview {
-    width: 200px;
-    height: 200px;
+  width: 200px;
+  height: 200px;
+}
+#summery {
+  background: #dedede !important;
 }
 </style>

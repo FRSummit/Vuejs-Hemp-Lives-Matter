@@ -27,4 +27,7 @@ export default {
     min-height: auto !important;
     padding: 50px 0;
 }
+.blog-details #summery, .blog-details #title {
+  background: #dedede !important;
+}
 </style>
