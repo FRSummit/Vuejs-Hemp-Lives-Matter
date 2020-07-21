@@ -6,7 +6,7 @@
 
 <script>
 export default {
-    name: 'Hero Banner'
+    // name: 'Hero Banner'
 }
 </script>
 

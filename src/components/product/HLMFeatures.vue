@@ -19,7 +19,7 @@
 
 <script>
 export default {
-  name: "HLM Feature",
+  // name: "HLM Feature",
   data() {
     return {
       items: [

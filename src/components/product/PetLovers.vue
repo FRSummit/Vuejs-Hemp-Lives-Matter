@@ -43,7 +43,7 @@
 
 <script>
 export default {
-  name: "Pet Lovers"
+  // name: "Pet Lovers"
 };
 </script>
 

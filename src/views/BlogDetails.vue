@@ -47,7 +47,7 @@
       <v-card class="elevation-12 v-card-edit">
         <v-toolbar color="primary" dark flat>
           <v-spacer />
-          <v-toolbar-title>New Blog</v-toolbar-title>
+          <v-toolbar-title>New Content</v-toolbar-title>
           <v-spacer />
         </v-toolbar>
         <v-card-text class="v-card-text">
