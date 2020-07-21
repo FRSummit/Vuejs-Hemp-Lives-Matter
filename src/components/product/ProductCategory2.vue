@@ -1,5 +1,16 @@
 <template>
   <div class="product">
+    <!-- Progressbar -->
+    <v-progress-circular
+      v-if="!progressBar"
+      class="v-progress-circular"
+      :size="70"
+      :width="7"
+      color="purple"
+      indeterminate
+    ></v-progress-circular>
+
+    <!-- Products -->
     <div class="product-section" v-for="(item, i) in productList" :key="i">
       <div class="remove-product-section" @click="removeItem(i)" v-if="userIsAuthenticated">
         <img src="../../assets/images/trush.png" alt="trush" />
@@ -26,16 +37,23 @@ export default {
   name: "Product",
   data() {
     return {
-      productList: []
+      userIsAuthenticated: false,
+      productList: [],
+      progressBar: false
     };
   },
   created() {
+    const usrAuth = localStorage.getItem("admin_info_hlm");
+    if (usrAuth) {
+      this.userIsAuthenticated = JSON.parse(usrAuth).auth_hlm;
+    }
     // load products
     firebase
       .database()
       .ref("hlm_product_list_2")
       .on("value", snapshot => {
         this.productList = snapshot.val();
+        this.progressBar = true
       });
   },
   methods: {
@@ -55,6 +73,9 @@ export default {
   padding: 0px 0 0px;
   background-color: transparent;
   background-image: linear-gradient(180deg, #ffffff 0%, #f8f6f3 100%);
+}
+.v-progress-circular {
+  color: purple;
 }
 .logo-leaf {
   margin: 30px 0 0;

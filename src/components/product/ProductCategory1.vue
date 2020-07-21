@@ -4,6 +4,18 @@
       <p class="title">Products</p>
       <p class="sub-title">Remember to activate with each visit</p>
     </div>
+
+    <!-- Progressbar -->
+    <v-progress-circular
+      v-if="!progressBar"
+      class="v-progress-circular"
+      :size="70"
+      :width="7"
+      color="purple"
+      indeterminate
+    ></v-progress-circular>
+
+    <!-- Products -->
     <div class="product-section" v-for="(item, i) in productList" :key="i">
       <div class="remove-product-section" @click="removeItem(i)" v-if="userIsAuthenticated">
         <img src="../../assets/images/trush.png" alt="trush">
@@ -115,7 +127,8 @@ export default {
       picture: null, //For image upload
       imageData: null, //For image upload
       uploadValue: 0, //For image upload
-      productList: []
+      productList: [],
+      progressBar: false
     };
   },
   created() {
@@ -129,6 +142,7 @@ export default {
       .ref("hlm_product_list")
       .on("value", snapshot => {
         this.productList = snapshot.val();
+        this.progressBar = true
         // console.log(snapshot.val())
         // console.log(Object.keys(snapshot.val()))
         // for(let i=0; i<Object.keys(snapshot.val()).length; i++) {
@@ -263,6 +277,9 @@ export default {
 }
 .logo-leaf {
   margin: 30px 0 0;
+}
+.v-progress-circular {
+  color: purple;
 }
 .product-section {
   width: 22%;
