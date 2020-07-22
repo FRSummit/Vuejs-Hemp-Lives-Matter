@@ -58,7 +58,7 @@
 
 <script>
 export default {
-  name: "Customers Reviews",
+  // name: "Customers Reviews",
   data() {
     return {};
   },

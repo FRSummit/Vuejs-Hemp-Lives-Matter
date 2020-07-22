@@ -18,7 +18,7 @@
 
 <script>
 export default {
-  name: "CBD Products",
+  // name: "CBD Products",
   data() {
     return {
       items: [

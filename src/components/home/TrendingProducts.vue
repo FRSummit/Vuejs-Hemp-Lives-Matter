@@ -22,7 +22,7 @@
 
 <script>
 export default {
-  name: "Trending Products",
+  // name: "Trending Products",
   data() {
     return {
       items: [
