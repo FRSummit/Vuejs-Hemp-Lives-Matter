@@ -1,5 +1,5 @@
 <template>
-  <div class="blog-details">
+  <div class="blog-details" id="blog-details">
 
     <!-- Progressbar -->
     <v-progress-circular
@@ -166,6 +166,10 @@ export default {
         this.blogDetails = snapshot.val();
         this.progressBar = true
       });
+
+      // if(document.getElementById('blog-details').clientHeight > 1000) {
+      //   document.querySelector('#blog-details .add-content').style.position = 'absolute';
+      // }
   },
   methods: {
     addNewBlog() {
@@ -227,7 +231,8 @@ export default {
             console.log(data.path.pieces_[1]);
           })
           .catch(error => console.log(error));
-        // window.location.reload();
+          this.addNewBlog()
+        window.location.reload();
       }
     },
     onUpload() {
@@ -356,7 +361,7 @@ export default {
 .add-content {
   width: 60%;
   margin: 0 auto;
-  position: absolute;
+  /* position: absolute; */
   top: 100px;
   right: 30px;
 }
