@@ -24,7 +24,7 @@
         <img :src="item.img1_url" alt />
       </div>
       <div class="product-txt-btn">
-        <p>{{ item.details }}</p>
+        <p>{{ item.title }}</p>
         <div class="learn-more-btn">
           <a :href="item.productUrl" target="_blank">
             <span class="elementor-button-text">Learn More</span>
@@ -132,24 +132,6 @@ export default {
       uploadValue: 0, //For image upload
       productList: [],
       progressBar: false,
-      // items: [
-      //   {
-      //     src: require("../../assets/images/productsHempGummies-orvmua8mk78logs7zk2mm68out4rh8pcy5tl451rt4.png"),
-      //     details: "Name of the image"
-      //   },
-      //   {
-      //     src: require("../../assets/images/BathBox6PackOpen-orvmuxqlb24rqpu36c8auib7pfwxtoande4q422xhk.png"),
-      //     details: "Name of the image"
-      //   },
-      //   {
-      //     src: require("../../assets/images/FullSpectrum_allC-orviq22utqbsu63aizhkx2swidq0nj968ia3oatr0o.png"),
-      //     details: "Name of the image"
-      //   },
-      //   {
-      //     src: require("../../assets/images/valuePackHempworxDirector-orkq5bh2oasr23ijxry6ul5ax4fq5nxhyoeqgy2hoo.png"),
-      //     details: "Name of the image"
-      //   }
-      // ]
     };
   },
   created() {
@@ -164,11 +146,6 @@ export default {
       .on("value", snapshot => {
         this.productList = snapshot.val();
         this.progressBar = true
-        // console.log(snapshot.val())
-        // console.log(Object.keys(snapshot.val()))
-        // for(let i=0; i<Object.keys(snapshot.val()).length; i++) {
-        //   console.log(snapshot.val()[Object.keys(snapshot.val())[i]])
-        // }
       });
   },
   methods: {
