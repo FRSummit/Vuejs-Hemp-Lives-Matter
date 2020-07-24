@@ -147,24 +147,24 @@ export default {
     return {
       items: [
         {
-          src: require("../assets/images/productsHempGummies-orvmua8mk78logs7zk2mm68out4rh8pcy5tl451rt4.png")
+          src: require("../assets/images/productsHempGummies-orvmua8mk78logs7zk2mm68out4rh8pcy5tl451rt4.png"),
         },
         {
-          src: require("../assets/images/BathBox6PackOpen-orvmuxqlb24rqpu36c8auib7pfwxtoande4q422xhk.png")
+          src: require("../assets/images/BathBox6PackOpen-orvmuxqlb24rqpu36c8auib7pfwxtoande4q422xhk.png"),
         },
         {
-          src: require("../assets/images/FullSpectrum_allC-orviq22utqbsu63aizhkx2swidq0nj968ia3oatr0o.png")
+          src: require("../assets/images/FullSpectrum_allC-orviq22utqbsu63aizhkx2swidq0nj968ia3oatr0o.png"),
         },
         {
-          src: require("../assets/images/valuePackHempworxDirector-orkq5bh2oasr23ijxry6ul5ax4fq5nxhyoeqgy2hoo.png")
-        }
-      ]
+          src: require("../assets/images/valuePackHempworxDirector-orkq5bh2oasr23ijxry6ul5ax4fq5nxhyoeqgy2hoo.png"),
+        },
+      ],
     };
   },
   created() {},
   mounted() {
     this.$store.state.routeName = "About";
-  }
+  },
 };
 </script>
 
@@ -328,18 +328,61 @@ export default {
   margin-left: 10px;
 }
 .desc-section .btn-section {
-    margin: 30px 0;
-    text-align: left;
+  margin: 30px 0;
+  text-align: left;
 }
 .desc-section .btn-section a {
-    background: #8BC34A;
-    padding: 15px 40px;
-    border-radius: 30px;
-    color: #fff;
-    text-decoration: none;
-    font-size: 16px;
+  background: #8bc34a;
+  padding: 15px 40px;
+  border-radius: 30px;
+  color: #fff;
+  text-decoration: none;
+  font-size: 16px;
 }
 .desc-section .btn-section a span {
   margin-left: 15px;
+}
+
+@media screen and (max-width: 1050px) {
+  .section-one .description-section,
+  .section-one .img-section,
+  .section-three .desc-section,
+  .section-three .img-section {
+    display: block;
+    width: 90%;
+    margin: 0 auto;
+  }
+  .desc-section .btn-section {
+    text-align: center;
+  }
+}
+
+@media screen and (max-width: 768px) {
+}
+
+@media screen and (max-width: 550px) {
+  .certificate-section .icon {
+    width: 100%;
+    text-align: center;
+    margin: 0 auto;
+}
+  .certificate-section .details {
+    display: block;
+    width: 100%;
+    margin: 0 auto;
+  }
+  .certificate-section .certificate,
+  .certificate-section .certificate-view {
+    text-align: center;
+  }
+}
+
+@media screen and (max-width: 491px) {
+  .section-two-inner .speaker-section[data-v-039c5b43],
+  .section-two-inner .customer-section[data-v-039c5b43] {
+    display: block;
+    width: 100%;
+    text-align: center;
+  }
 }
 </style>
