@@ -1,5 +1,5 @@
 <template>
-  <div class="sign-up">
+  <div class="sign-up" id="sign-up">
     <v-app id="inspire" class="sign-up-v-app" v-if="userIsAuthenticated">
       <v-content>
         <v-container class="fill-height" fluid>
@@ -231,6 +231,7 @@ export default {
 }
 .sign-up-v-app {
   background: transparent !important;
+    width: 100%;
 }
 .sign-up .v-application .primary {
   background-color: #272727 !important;
@@ -255,5 +256,17 @@ export default {
 .field-input {
   display: inline-block;
   width: 78%;
+}
+
+@media screen and (max-width: 1050px) {
+  #sign-up .v-sheet.v-card {
+    width: 100% !important;
+  }
+}
+
+@media screen and (max-width: 768px) {
+}
+
+@media screen and (max-width: 491px) {
 }
 </style>

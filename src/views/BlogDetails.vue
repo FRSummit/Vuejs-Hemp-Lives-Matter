@@ -1,6 +1,5 @@
 <template>
   <div class="blog-details" id="blog-details">
-
     <!-- Progressbar -->
     <v-progress-circular
       v-if="!progressBar"
@@ -143,7 +142,7 @@ export default {
       img1_url: null, //For image upload
       picture: null, //For image upload
       imageData: null, //For image upload
-      uploadValue: 0 //For image upload
+      uploadValue: 0, //For image upload
     };
   },
   created() {
@@ -162,14 +161,14 @@ export default {
     firebase
       .database()
       .ref("Blog_" + JSON.parse(blogDetails).hlm_blog_id)
-      .on("value", snapshot => {
+      .on("value", (snapshot) => {
         this.blogDetails = snapshot.val();
-        this.progressBar = true
+        this.progressBar = true;
       });
 
-      // if(document.getElementById('blog-details').clientHeight > 1000) {
-      //   document.querySelector('#blog-details .add-content').style.position = 'absolute';
-      // }
+    // if(document.getElementById('blog-details').clientHeight > 1000) {
+    //   document.querySelector('#blog-details .add-content').style.position = 'absolute';
+    // }
   },
   methods: {
     addNewBlog() {
@@ -224,14 +223,14 @@ export default {
           .push({
             title: this.title,
             summery: this.summery + "...",
-            img1_url: this.img1_url
+            img1_url: this.img1_url,
           })
-          .then(data => {
+          .then((data) => {
             this.createBlogForId(data.path.pieces_[1]);
             console.log(data.path.pieces_[1]);
           })
-          .catch(error => console.log(error));
-          this.addNewBlog()
+          .catch((error) => console.log(error));
+        this.addNewBlog();
         window.location.reload();
       }
     },
@@ -244,16 +243,16 @@ export default {
         .put(this.imageData);
       storageRef.on(
         `state_changed`,
-        snapshot => {
+        (snapshot) => {
           this.uploadValue =
             (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
         },
-        error => {
+        (error) => {
           console.log(error.message);
         },
         () => {
           this.uploadValue = 100;
-          storageRef.snapshot.ref.getDownloadURL().then(url => {
+          storageRef.snapshot.ref.getDownloadURL().then((url) => {
             this.picture = url;
             this.img1_url = url;
             console.log(this.img1_url);
@@ -268,8 +267,8 @@ export default {
       this.uploadValue = 0;
       this.picture = null;
       this.imageData = event.target.files[0];
-    }
-  }
+    },
+  },
 };
 </script>
 
@@ -407,5 +406,61 @@ input {
 }
 #summery {
   background: #dedede !important;
+}
+
+@media screen and (max-width: 1050px) {
+  .add-content {
+    width: 100%;
+  }
+  .blog-section {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .title {
+    font-size: 2.125em;
+  }
+  .blog-title[data-v-2bd0d7f6] {
+    font-size: 24px;
+  }
+  .blog-txt-btn .description {
+    font-size: 18px;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .blog-list-btn {
+    position: relative;
+    top: 0;
+    left: 0;
+  }
+  .add-new-btn {
+    position: relative;
+    top: 0;
+    left: 0;
+    margin-top: 20px;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .img-sec {
+    width: 50%;
+  }
+}
+
+@media screen and (max-width: 491px) {
+  .blog-details {
+    padding: 20px 10px;
+  }
+  .title {
+    font-size: 26px;
+  }
+  .blog-title[data-v-2bd0d7f6] {
+    font-size: 20px;
+  }
+  .blog-txt-btn .description {
+    font-size: 16px;
+  }
 }
 </style>

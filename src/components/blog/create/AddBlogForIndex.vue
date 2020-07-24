@@ -190,4 +190,13 @@ input {
     padding: 4px 12px !important;
     background: transparent !important;
 }
+
+@media screen and (max-width: 1050px) {
+}
+
+@media screen and (max-width: 768px) {
+}
+
+@media screen and (max-width: 491px) {
+}
 </style>

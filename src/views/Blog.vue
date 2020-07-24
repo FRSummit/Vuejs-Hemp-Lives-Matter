@@ -33,4 +33,13 @@ export default {
     font-weight: 300;
     margin: 30px;
 }
+
+@media screen and (max-width: 1050px) {
+}
+
+@media screen and (max-width: 768px) {
+}
+
+@media screen and (max-width: 491px) {
+}
 </style>

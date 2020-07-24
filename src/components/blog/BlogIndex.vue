@@ -221,4 +221,70 @@ export default {
   font-weight: bold;
   cursor: pointer;
 }
+
+@media screen and (max-width: 1250px) {
+  .blog-index {
+    padding: 20px 10px;
+  }
+  .blog-txt-btn .title {
+    position: relative;
+    left: 0;
+    top: 0;
+    margin: 0;
+  }
+  .blog-txt-btn .description {
+    position: relative;
+    left: 0;
+    top: 0;
+    margin: 0;
+  }
+}
+@media screen and (max-width: 1050px) {
+  .add-new-btn a {
+    width: 40%;
+  }
+}
+
+@media screen and (max-width: 850px) {
+  .blog-section {
+    width: 80%;
+    margin: 10px 0;
+  }
+}
+@media screen and (max-width: 768px) {
+  .add-new-btn a {
+    width: 50%;
+  }
+  .blog-index {
+    padding: 20px 10px;
+  }
+  .blog-section {
+    width: 100%;
+    margin: 10px 0;
+  }
+  .blog-txt-btn .title {
+    position: relative;
+    left: 0;
+    top: 0;
+    margin: 0;
+  }
+  .blog-txt-btn .description {
+    position: relative;
+    left: 0;
+    top: 0;
+    margin: 0;
+  }
+}
+
+@media screen and (max-width: 650px) {
+  .add-new-for-index {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 491px) {
+  .add-new-btn a {
+    width: 100%;
+  }
+}
 </style>

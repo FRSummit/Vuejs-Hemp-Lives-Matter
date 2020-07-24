@@ -1,5 +1,5 @@
 <template>
-  <div class="login">
+  <div class="login" id="login">
     <v-app id="inspire" class="login-v-app">
       <v-content>
         <v-container class fluid>
@@ -91,6 +91,7 @@ export default {
 <style scoped>
 .login .login-v-app {
   background: transparent !important;
+  width: 100%;
 }
 .login .headline {
   color: #ffffff;
@@ -110,5 +111,11 @@ export default {
 }
 .login .login-btn {
   width: 30%;
+}
+
+@media screen and (max-width: 1050px) {
+  #login .v-sheet.v-card {
+    width: 100% !important;
+  }
 }
 </style>
