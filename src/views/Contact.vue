@@ -101,11 +101,10 @@
 export default {
   name: "Contact",
   components: {},
-  created() {
-  },
+  created() {},
   mounted() {
     this.$store.state.routeName = "Contact";
-  }
+  },
 };
 </script>
 
@@ -168,32 +167,32 @@ export default {
 .question-section {
   text-align: center;
   position: relative;
-    min-height: 1400px;
+  min-height: 1400px;
 }
 .section-title {
   margin-bottom: 40px;
 }
 .question-inner .devider {
   position: absolute;
-    height: 1290px;
-    width: 4px;
-    color: #222;
-    background: #8BC34A;
-    left: 50%;
+  height: 1290px;
+  width: 4px;
+  color: #222;
+  background: #8bc34a;
+  left: 50%;
 }
 .question-inner .question {
-    position: absolute;
-    width: 45%;
-    border: 1px solid #dedede;
-    background: #F5F5F5;
-    box-shadow: 1px 1px 6px rgba(20, 20, 20, 0.4);
-    padding: 30px;
+  position: absolute;
+  width: 45%;
+  border: 1px solid #dedede;
+  background: #f5f5f5;
+  box-shadow: 1px 1px 6px rgba(20, 20, 20, 0.4);
+  padding: 30px;
 }
 .question-inner .question:nth-child(even) {
-    left: 0;
+  left: 0;
 }
 .question-inner .question:nth-child(odd) {
-    right: 0;
+  right: 0;
 }
 .question-inner .question.q1 {
   top: 10%;
@@ -214,14 +213,41 @@ export default {
   top: 60%;
 }
 .ques {
-    font-size: 20px;
-    font-weight: bold;
-    margin-bottom: 10px;
-    padding-bottom: 10px;
-    border-bottom: 2px solid #adadad;
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #adadad;
 }
 .answer {
-    font-size: 18px;
-    font-weight: normal;
+  font-size: 18px;
+  font-weight: normal;
+}
+
+@media screen and (max-width: 1050px) {
+  .address,
+  .email,
+  .location {
+    width: 90%;
+    display: block;
+    min-height: auto;
+    margin: 10px auto;
+  }
+  .question-inner .devider {
+    display: none;
+  }
+  .question-inner .question {
+    position: relative;
+    width: 100%;
+    display: block;
+    height: auto;
+    margin: 20px auto;
+  }
+}
+
+@media screen and (max-width: 768px) {
+}
+
+@media screen and (max-width: 491px) {
 }
 </style>
