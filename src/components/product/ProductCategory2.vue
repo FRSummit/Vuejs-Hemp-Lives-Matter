@@ -133,4 +133,17 @@ export default {
 .learn-more-btn a:hover {
   background-color: #5d9b30;
 }
+
+@media screen and (max-width: 1050px) {
+  .product {
+    margin-top: 20px;
+  }
+  .product-section {
+    display: block;
+    width: 80%;
+    margin: 10px auto;
+    border: 2px solid #dedede;
+    border-radius: 10px;
+  }
+}
 </style>

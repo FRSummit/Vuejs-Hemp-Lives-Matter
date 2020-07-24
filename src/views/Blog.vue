@@ -6,21 +6,18 @@
 </template>
 
 <script>
-import BlogIndex from '../components/blog/BlogIndex'
+import BlogIndex from "../components/blog/BlogIndex";
 
 export default {
-  name: 'Blog',
+  name: "Blog",
   components: {
-    BlogIndex
+    BlogIndex,
   },
-  created() {
-
-  },
+  created() {},
   mounted() {
-    this.$store.state.routeName = 'Blog'
-  }
-    
-}
+    this.$store.state.routeName = "Blog";
+  },
+};
 </script>
 
 <style scoped>
@@ -28,16 +25,20 @@ export default {
   text-align: center;
 }
 .title {
-    font-size: 3.125em;
-    text-align: center;
-    font-weight: 300;
-    margin: 30px;
+  font-size: 3.125em;
+  text-align: center;
+  font-weight: 300;
+  margin: 30px;
 }
 
 @media screen and (max-width: 1050px) {
 }
 
 @media screen and (max-width: 768px) {
+  .title {
+    font-size: 2.125em;
+    margin: 10px 0;
+  }
 }
 
 @media screen and (max-width: 491px) {

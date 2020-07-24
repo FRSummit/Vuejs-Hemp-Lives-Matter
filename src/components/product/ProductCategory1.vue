@@ -422,4 +422,25 @@ input {
   padding: 4px 12px !important;
   background: transparent !important;
 }
+
+@media screen and (max-width: 1050px) {
+  .product-section {
+    display: block;
+    width: 80%;
+    margin: 10px auto;
+    border: 2px solid #dedede;
+    border-radius: 10px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .img-sec {
+    width: 50%;
+  }
+  #product .v-sheet.v-card {
+    width: 90%;
+    left: 5%;
+    top: 80px;
+  }
+}
 </style>

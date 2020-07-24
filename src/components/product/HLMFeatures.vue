@@ -12,6 +12,13 @@
       indeterminate
     ></v-progress-circular>
 
+    <!-- Add Product Section -->
+    <div class="add-new-btn-hlm-products" v-if="userIsAuthenticated && productListLength<3">
+      <a @click="addNewProduct">
+        <span class="elementor-button-text">{{ addNewBlogIndex }}</span>
+      </a>
+    </div>
+
     <!-- Products -->
     <div class="product-section" v-for="(item, i) in productList" :key="i">
       <div class="remove-product-section" @click="removeItem(i)" v-if="userIsAuthenticated">
@@ -28,13 +35,6 @@
           </a>
         </div>
       </div>
-    </div>
-
-    <!-- Add Product Section -->
-    <div class="add-new-btn-hlm-products" v-if="userIsAuthenticated && productListLength<3">
-      <a @click="addNewProduct">
-        <span class="elementor-button-text">{{ addNewBlogIndex }}</span>
-      </a>
     </div>
     <!-- Form -->
     <v-card class="elevation-12 v-card-edit" v-if="userIsAuthenticated && createNewBlogIndex && productListLength<3">
@@ -401,5 +401,45 @@ input {
   color: #000 !important;
   padding: 4px 12px !important;
   background: transparent !important;
+}
+
+@media screen and (max-width: 1050px) {
+}
+
+@media screen and (max-width: 768px) {
+  .hlm-feature {
+    padding: 10px 0;
+  }
+  .title {
+    margin: 0;
+  }
+  .add-new-btn-hlm-products {
+    position: relative;
+    top: 0;
+    right: 0;
+    width: 50%;
+    margin: 10px auto;
+  }
+  .product-section {
+    width: 80%;
+    display: block;
+    margin: 10px auto;
+    border: 2px solid #F3C12A;
+    border-radius: 10px;
+  }
+  .product-txt-btn p {
+    margin-bottom: 0;
+  }
+  #hlm-feature .v-sheet.v-card {
+    width: 90%;
+    top: 200px;
+    left: 5%;
+  }
+}
+
+@media screen and (max-width: 650px) {
+  .img-sec {
+    width: 50%;
+  }
 }
 </style>

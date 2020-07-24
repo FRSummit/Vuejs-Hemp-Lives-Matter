@@ -562,4 +562,33 @@ input {
   padding: 4px 12px !important;
   background: transparent !important;
 }
+
+@media screen and (max-width: 1050px) {
+  .product-section,
+  .product-img-sec {
+    display: block;
+    width: 90%;
+    margin: 10px auto;
+  }
+  #pet-lovers .v-sheet.v-card {
+    width: 90%;
+    top: 100px;
+    left: 5%;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .txt {
+    margin: 0;
+  }
+  .txt .title, .txt h2 a {
+    font-size: 40px;
+  }
+  .img-sec {
+    width: 50%;
+  }
+}
+
+@media screen and (max-width: 491px) {
+}
 </style>

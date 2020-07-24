@@ -9,7 +9,7 @@
           <!-- <a href="https://www.hempworx.com/cwrhemp" target="_blank">
             <span class="elementor-button-text">Step One</span>
           </a> -->
-          <button class="button" type="button" data-hover="Active Now" data-active="I'M ACTIVE">
+          <button @click="activeNow" class="button" type="button" data-hover="Active Now" data-active="I'M ACTIVE">
             <span>Step One</span>
           </button>
         </div>
@@ -25,6 +25,11 @@
 <script>
 export default {
   // name: "Activity Banner"
+  methods: {
+    activeNow() {
+      window.open('https://www.hempworx.com/cwrhemp', '_blank')
+    }
+  }
 };
 </script>
 
@@ -200,5 +205,22 @@ export default {
   -moz-transition-delay: 0s;
   -o-transition-delay: 0s;
   transition-delay: 0s;
+}
+
+@media screen and (max-width: 1050px) {
+}
+
+@media screen and (max-width: 768px) {
+  .activity-inner .activate-section {
+    display: block;
+    width: 100%;
+  }
+  .activity-inner .keyboard-img-sec {
+    display: block;
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 491px) {
 }
 </style>
