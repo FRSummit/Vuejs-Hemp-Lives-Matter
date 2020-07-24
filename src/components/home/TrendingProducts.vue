@@ -406,4 +406,19 @@ input {
   padding: 4px 12px !important;
   background: transparent !important;
 }
+
+@media screen and (max-width: 1050px) {
+  .product-section {
+    width: 40%;
+    margin: 0 auto;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .product-section {
+    width: 80%;
+    display: block;
+    margin: 0 auto;
+  }
+}
 </style>

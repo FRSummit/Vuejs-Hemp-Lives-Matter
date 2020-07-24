@@ -6,6 +6,8 @@ import vuetify from './plugins/vuetify'
 import '@fortawesome/fontawesome-free/css/all.css'
 import '@fortawesome/fontawesome-free/js/all.js'
 import firebase from 'firebase'
+import 'bootstrap'
+import 'bootstrap/dist/css/bootstrap.min.css'
 
 var firebaseConfig = {
   apiKey: "AIzaSyB2NbOtkfGWQdod6wP-FtPG1fEMlRfJETg",
@@ -35,7 +37,7 @@ new Vue({
  * >> vue add vuetify
  * >> npm install firebase
  * >> npm install --save-dev @fortawesome/fontawesome-free
- * >>
+ * >> npm install bootstrap jquery popper.js
  * >>
  * >>
  */
@@ -46,4 +48,7 @@ new Vue({
  * 
  * Error:1 Solution
  * https://stackoverflow.com/questions/62759274/issue-when-running-npm-run-serve-in-vue-project * 
+ * 
+ * Bootstrap add
+ * https://travishorn.com/adding-bootstrap-to-a-vue-cli-project-98c2a30e0ed0
  */

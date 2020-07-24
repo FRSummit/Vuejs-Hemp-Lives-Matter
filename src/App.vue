@@ -30,4 +30,12 @@ export default {
 .blog-details #summery, .blog-details #title {
   background: #dedede !important;
 }
+
+
+@media screen and (max-width: 1050px) {
+}
+@media screen and (max-width: 768px) {
+}
+@media screen and (max-width: 491px) {
+}
 </style>

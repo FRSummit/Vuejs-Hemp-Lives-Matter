@@ -28,7 +28,6 @@
 
       <!-- link section -->
       <div class="link-section">
-
         <!-- quick links -->
         <div class="quick-links">
           <h5 class="quick-links-title">Quick Links</h5>
@@ -66,7 +65,6 @@
               </a>
             </li>
           </ul>
-
         </div>
       </div>
     </div>
@@ -100,7 +98,7 @@
 
 <script>
 export default {
-  name: "Footer"
+  name: "Footer",
 };
 </script>
 
@@ -118,7 +116,7 @@ export default {
 .icon-image-section {
   width: 38%;
   display: inline-block;
-    overflow: hidden;
+  overflow: hidden;
 }
 .parent-image img {
   width: 80%;
@@ -141,7 +139,7 @@ export default {
   width: 30%;
   display: inline-block;
   text-align: center;
-    overflow: hidden;
+  overflow: hidden;
 }
 .movement-img {
 }
@@ -158,14 +156,14 @@ export default {
   width: 30%;
   display: inline-block;
   text-align: center;
-    overflow: hidden;
-    vertical-align: top;
-    font-size: 20px;
-    font-weight: bold;
+  overflow: hidden;
+  vertical-align: top;
+  font-size: 20px;
+  font-weight: bold;
 }
 .link-section li {
   list-style-type: none;
-    line-height: 2.5;
+  line-height: 2.5;
 }
 .link-section li a {
   cursor: pointer;
@@ -174,18 +172,18 @@ export default {
   color: #fff;
   text-decoration: none;
 }
-.quick-links-title, .site-links-title {
-  font-family: 'Merriweather',serif;;
+.quick-links-title,
+.site-links-title {
+  font-family: "Merriweather", serif;
 }
 .quick-links {
   display: inline-block;
-    margin-right: 20px;
+  margin-right: 20px;
 }
 .site-links {
   display: inline-block;
   vertical-align: top;
 }
-
 
 /* copyright-section */
 .copyright-section {
@@ -210,5 +208,80 @@ export default {
 }
 .elementor-icon-list-icon {
   color: #fff;
+}
+
+@media screen and (max-width: 1050px) {
+}
+@media screen and (max-width: 768px) {
+  .footer-details-section {
+    padding: 20px;
+    text-align: center;
+  }
+  .icon-image-section {
+    /* display: block;
+    width: 100%; */
+    
+    margin-right: 20px;
+    text-align: center;
+    margin-bottom: 40px;
+  }
+  /* .parent-image img {
+    width: 40%
+  }
+  .child-image img {
+    width: 20%
+  } */
+  .join-movement-section {
+    /* display: block;
+    width: 100%; */
+    
+    margin-left: 20px;
+    text-align: center;
+    margin-bottom: 40px;
+  }
+  /* .movement-img img {
+    width: 100px;
+  } */
+  .movement-text {
+    font-size: 18px;
+  }
+  .link-section {
+    display: block;
+    width: 100%;
+    text-align: center;
+  }
+  .quick-links-title, .site-links-title {
+    font-size: 18px;
+  }
+  .link-section li {
+    font-size: 16px;
+  }
+  .copyright-section {
+    padding: 10px;
+  }
+}
+@media screen and (max-width: 491px) {
+  .icon-image-section {
+    display: block;
+    width: 100%;
+    margin-right: 0;
+  }
+  .parent-image img {
+    width: 40%
+  }
+  .child-image img {
+    width: 20%
+  }
+  .join-movement-section {
+    display: block;
+    width: 100%;
+    margin-left: 0;
+  }
+  .movement-img img {
+    width: 100px;
+  }
+  .copyright-wrapper span, .social-links {
+    font-size: 12px;
+  }
 }
 </style>

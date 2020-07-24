@@ -1,6 +1,5 @@
 <template>
   <div class="cbd-products" id="cbd-products">
-
     <!-- Progressbar -->
     <v-progress-circular
       v-if="!progressBar"
@@ -21,7 +20,7 @@
     <!-- Products -->
     <div class="cbd-card" v-for="(item, i) in productList" :key="i">
       <div class="remove-product-section" @click="removeItem(i)" v-if="userIsAuthenticated">
-        <img src="../../assets/images/trush.png" alt="trush">
+        <img src="../../assets/images/trush.png" alt="trush" />
       </div>
       <h1>{{ item.title }}</h1>
       <p>{{ item.details }}</p>
@@ -114,7 +113,6 @@
       </v-card-text>
     </v-card>
     <!-- Form -->
-
   </div>
 </template>
 
@@ -148,9 +146,9 @@ export default {
     firebase
       .database()
       .ref("hlm_home_cbd_products")
-      .on("value", snapshot => {
+      .on("value", (snapshot) => {
         this.productList = snapshot.val();
-        this.progressBar = true
+        this.progressBar = true;
       });
   },
   methods: {
@@ -158,14 +156,19 @@ export default {
       if (!this.createNewBlogIndex) {
         this.createNewBlogIndex = true;
         this.addNewBlogIndex = "Close";
-        document.querySelector(".add-new-btn-home-cbd-products a").style.background = "red";
-        document.querySelector(".add-new-btn-home-cbd-products a").style.color = "#fff";
+        document.querySelector(
+          ".add-new-btn-home-cbd-products a"
+        ).style.background = "red";
+        document.querySelector(".add-new-btn-home-cbd-products a").style.color =
+          "#fff";
       } else if (this.createNewBlogIndex) {
         this.createNewBlogIndex = false;
         this.addNewBlogIndex = "Add New CBD Product";
-        document.querySelector(".add-new-btn-home-cbd-products a").style.background =
-          "transparent";
-        document.querySelector(".add-new-btn-home-cbd-products a").style.color = "#000";
+        document.querySelector(
+          ".add-new-btn-home-cbd-products a"
+        ).style.background = "transparent";
+        document.querySelector(".add-new-btn-home-cbd-products a").style.color =
+          "#000";
       }
     },
     // Adding new content
@@ -194,19 +197,19 @@ export default {
       } else {
         firebase
           .database()
-          .ref('hlm_home_cbd_products')
+          .ref("hlm_home_cbd_products")
           .push({
             title: this.title,
             details: this.details,
             productUrl: this.productUrl,
-            img1_url: this.img1_url
+            img1_url: this.img1_url,
           })
-          .then(data => {
+          .then((data) => {
             console.log(data.path.pieces_[1]);
             (this.title = ""), (this.details = ""), (this.productUrl = "");
-            this.addNewProduct()
+            this.addNewProduct();
           })
-          .catch(error => console.log(error));
+          .catch((error) => console.log(error));
       }
     },
     onUpload() {
@@ -218,16 +221,16 @@ export default {
         .put(this.imageData);
       storageRef.on(
         `state_changed`,
-        snapshot => {
+        (snapshot) => {
           this.uploadValue =
             (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
         },
-        error => {
+        (error) => {
           console.log(error.message);
         },
         () => {
           this.uploadValue = 100;
-          storageRef.snapshot.ref.getDownloadURL().then(url => {
+          storageRef.snapshot.ref.getDownloadURL().then((url) => {
             this.picture = url;
             this.img1_url = url;
             console.log(this.img1_url);
@@ -246,30 +249,32 @@ export default {
         .database()
         .ref("hlm_home_cbd_products/" + key)
         .remove();
-    }
-  }
+    },
+  },
 };
 </script>
 
 <style scoped>
 .cbd-products {
-    text-align: center;
-    margin: 80px 0;
+  text-align: center;
+  margin: 80px 0;
   position: relative;
 }
 .v-progress-circular {
   color: purple;
 }
 .cbd-card {
-    display: inline-block;
-    width: 25%;
-    height: 490px;
-    vertical-align: middle;
-    background: #fff;
-    margin: 0 30px;
-    border-radius: 10px;
-    padding: 40px 52px 0;
+  display: inline-block;
+  width: 25%;
+  min-height: 600px;
+  vertical-align: middle;
+  background: #fff;
+  margin: 0 10px;
+  border-radius: 10px;
+  padding: 40px 52px 0;
   position: relative;
+  height: auto;
+    vertical-align: top;
 }
 .remove-product-section {
   position: absolute;
@@ -282,13 +287,13 @@ export default {
   height: 20px;
 }
 .cbd-card h1 {
-    font-size: 24px;
-    margin-bottom: 20px;
+  font-size: 24px;
+  margin-bottom: 20px;
 }
 .cbd-card p {
-    font-size: 20px;
-    font-weight: bold;
-    margin-bottom: 20px;
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 20px;
 }
 .learn-more-btn {
   padding: 16px 0;
@@ -304,7 +309,7 @@ export default {
   font-family: Arial, Helvetica, sans-serif;
 }
 .fa-arrow-right {
-    margin-left: 10px;
+  margin-left: 10px;
 }
 .learn-more-btn a:hover {
   background-color: #5d9b30;
@@ -312,13 +317,14 @@ export default {
 .product-img-sec img {
   max-width: 280px;
   max-height: 280px;
+    width: 100%;
 }
 
 /* Add new Button */
 .add-new-btn-home-cbd-products {
-    width: 25%;
-    text-align: right;
-    margin: 0 auto;
+  width: 25%;
+  text-align: right;
+  margin: 0 auto;
 }
 .add-new-btn-home-cbd-products a {
   color: #000 !important;
@@ -398,5 +404,51 @@ input {
   color: #000 !important;
   padding: 4px 12px !important;
   background: transparent !important;
+}
+
+@media screen and (max-width: 1050px) {
+  .add-new-btn-home-cbd-products {
+    width: 80%;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .cbd-card {
+    display: block;
+    width: 80%;
+    margin: 10px auto;
+    overflow: hidden;
+    height: auto;
+    border: 2px solid #dedede;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .add-new-btn-home-cbd-products {
+    width: 50%;
+  }
+  .cbd-card {
+    display: block;
+    width: 80%;
+    margin: 10px auto;
+    overflow: hidden;
+    height: auto;
+    border: 2px solid #dedede;
+  }
+}
+
+@media screen and (max-width: 650px) {
+  .add-new-btn-home-cbd-products {
+    width: 80%;
+  }
+  .add-new-btn-home-cbd-products a {
+    font-size: 14px;
+  }
+  .cbd-card h1 {
+    font-size: 20px;
+  }
+  .cbd-card p {
+    font-size: 16px;
+  }
 }
 </style>

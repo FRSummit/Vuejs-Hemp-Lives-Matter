@@ -199,6 +199,8 @@ export default {
     padding: 16px 0;
     border-radius: 4px;
     line-height: 1.8;
+    min-height: 150px;
+    vertical-align: middle;
 }
 .section-two-banner .img-sec {
   display: inline-block;
@@ -280,5 +282,78 @@ export default {
     max-width: 133px;
     margin: 0 50px;
     vertical-align: middle;
+}
+
+@media screen and (max-width: 1050px) {
+  .section-two-banner .shipping-section,
+  .section-two-banner .certify-test-section, 
+  .section-two-banner .shaving-section, 
+  .section-two-banner .organic-vegan-section {
+    display: inline-block;
+    width: 40%;
+    margin: 10px 20px;
+    min-height: auto;
+  }
+}
+@media screen and (max-width: 768px) {
+  .section-one .img-sec, .section-one .shop-now-sec-sec {
+    display: block;
+    width: 100%;
+    text-align: center;
+    margin: 0;
+  }
+  .section-one .shop-now-sec-sec .text-sec {
+    display: block;
+    width: 100%;
+    text-align: center;
+  }
+  .section-one .shop-now-sec-sec .text-sec .join-cbd {
+    display: block;
+    width: 100%;
+    text-align: center;
+    font-size: 30px;
+  }
+  .section-one .shop-now-sec-sec .text-sec .join-desc {
+    display: block;
+    width: 100%;
+    text-align: center;
+    font-size: 20px;
+  }
+  .section-one .shop-now-sec-sec .shop-now-btn {
+    display: block;
+    width: 100%;
+    text-align: center;
+  }
+  /* shipping-section */
+  .section-two-banner .shipping-section,
+  .section-two-banner .certify-test-section, 
+  .section-two-banner .shaving-section, 
+  .section-two-banner .organic-vegan-section {
+    display: block;
+    width: auto;
+    margin: 10px 20px;
+  }
+
+  /* section 4 - get a free  sample */
+  .section-four-free-sample .txt-sec,
+  .section-four-free-sample .btn-sec {
+    width: 100%;
+    text-align: center;
+  }
+
+  /* Company logo */
+  .company-logo-section p {
+    width: 100%;
+    text-align: center;
+  }
+}
+@media screen and (max-width: 491px) {
+  .section-four-free-sample {
+    padding: 40px 0;
+  }
+  .section-four-free-sample .txt-sec {
+    font-size: 20px;
+    overflow: hidden;
+  }
 }
 </style>

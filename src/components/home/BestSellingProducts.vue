@@ -390,4 +390,14 @@ input {
   padding: 4px 12px !important;
   background: transparent !important;
 }
+
+@media screen and (max-width: 768px) {
+  /* product-section */
+  .product-section {
+    width: 80%;
+    /* border: 2px solid #dedede; */
+    padding: 20px;
+    border-radius: 10px;
+  }
+}
 </style>

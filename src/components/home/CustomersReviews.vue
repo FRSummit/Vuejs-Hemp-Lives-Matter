@@ -3,11 +3,19 @@
     <p class="title">Customers Reviews</p>
     <div class="review-card-one">
       <!-- Add/Remove btns -->
-      <div class="add-product-section" @click="addItem()" v-if="userIsAuthenticated && productListLength<1">
-        <img src="../../assets/images/edit_icon.png" alt="close-add">
+      <div
+        class="add-product-section"
+        @click="addItem()"
+        v-if="userIsAuthenticated && productListLength<1"
+      >
+        <img src="../../assets/images/edit_icon.png" alt="close-add" />
       </div>
-      <div class="remove-product-section" @click="removeItem()" v-if="userIsAuthenticated && productListLength>0">
-        <img src="../../assets/images/trush.png" alt="trush">
+      <div
+        class="remove-product-section"
+        @click="removeItem()"
+        v-if="userIsAuthenticated && productListLength>0"
+      >
+        <img src="../../assets/images/trush.png" alt="trush" />
       </div>
       <!-- Data -->
       <div v-for="(item, i) in productList" :key="i">
@@ -22,7 +30,7 @@
           <p>{{ item.message }}</p>
         </div>
         <div class="profile">
-          <img :src="item.img1_url" alt="">
+          <img :src="item.img1_url" alt />
           <p>{{ item.title }}, {{ item.address }}</p>
         </div>
       </div>
@@ -30,9 +38,27 @@
       <!-- Form -->
       <div class="add-form" v-if="userIsAuthenticated && createNewBlogIndex">
         <form class="review-form" @submit.prevent="onSubmit">
-          <input class="field-input" v-model="title" id="title" placeholder="Name of reviewer" type="text"/>
-          <input class="field-input" v-model="address" id="country" placeholder="Country of reviewer" type="text"/>
-          <textarea class="field-textarea" v-model="message" id="message" placeholder="Message" type="text"/>
+          <input
+            class="field-input"
+            v-model="title"
+            id="title"
+            placeholder="Name of reviewer"
+            type="text"
+          />
+          <input
+            class="field-input"
+            v-model="address"
+            id="country"
+            placeholder="Country of reviewer"
+            type="text"
+          />
+          <textarea
+            class="field-textarea"
+            v-model="message"
+            id="message"
+            placeholder="Message"
+            type="text"
+          />
           <!-- img 1 -->
           <div class="name-field">
             <label class="field-label img-sec">Upload an image:</label>
@@ -81,11 +107,19 @@
 
     <div class="review-card-two">
       <!-- Add/Remove btns -->
-      <div class="add-product-section" @click="addItem2()" v-if="userIsAuthenticated && productListLength2<1">
-        <img src="../../assets/images/edit_icon.png" alt="close-add">
+      <div
+        class="add-product-section"
+        @click="addItem2()"
+        v-if="userIsAuthenticated && productListLength2<1"
+      >
+        <img src="../../assets/images/edit_icon.png" alt="close-add" />
       </div>
-      <div class="remove-product-section" @click="removeItem2()" v-if="userIsAuthenticated && productListLength2>0">
-        <img src="../../assets/images/trush.png" alt="trush">
+      <div
+        class="remove-product-section"
+        @click="removeItem2()"
+        v-if="userIsAuthenticated && productListLength2>0"
+      >
+        <img src="../../assets/images/trush.png" alt="trush" />
       </div>
 
       <!-- data -->
@@ -101,7 +135,7 @@
           <p>{{ item.message2 }}</p>
         </div>
         <div class="profile">
-          <img :src="item.img1_url2" alt="">
+          <img :src="item.img1_url2" alt />
           <p>{{ item.title2 }}, {{ item.address2 }}</p>
         </div>
       </div>
@@ -109,9 +143,27 @@
       <!-- Form -->
       <div class="add-form" v-if="userIsAuthenticated && createNewBlogIndex2">
         <form class="review-form" @submit.prevent="onSubmit2">
-          <input class="field-input" v-model="title2" id="title" placeholder="Name of reviewer" type="text"/>
-          <input class="field-input" v-model="address2" id="country" placeholder="Country of reviewer" type="text"/>
-          <textarea class="field-textarea" v-model="message2" id="message" placeholder="Message" type="text"/>
+          <input
+            class="field-input"
+            v-model="title2"
+            id="title"
+            placeholder="Name of reviewer"
+            type="text"
+          />
+          <input
+            class="field-input"
+            v-model="address2"
+            id="country"
+            placeholder="Country of reviewer"
+            type="text"
+          />
+          <textarea
+            class="field-textarea"
+            v-model="message2"
+            id="message"
+            placeholder="Message"
+            type="text"
+          />
           <!-- img 1 -->
           <div class="name-field">
             <label class="field-label img-sec">Upload an image:</label>
@@ -148,7 +200,7 @@
 </template>
 
 <script>
-import firebase from 'firebase'
+import firebase from "firebase";
 
 export default {
   // name: "Customers Reviews",
@@ -166,7 +218,7 @@ export default {
       progressBar: false,
       createNewBlogIndex: false,
       productListLength: null,
-      
+
       title2: null,
       address2: null,
       message2: null,
@@ -189,9 +241,9 @@ export default {
     firebase
       .database()
       .ref("hlm_home_customer_review_1")
-      .on("value", snapshot => {
+      .on("value", (snapshot) => {
         this.productList = snapshot.val();
-        this.progressBar = true
+        this.progressBar = true;
         this.productListLength = Object.keys(snapshot.val()).length;
       });
 
@@ -199,9 +251,9 @@ export default {
     firebase
       .database()
       .ref("hlm_home_customer_review_2")
-      .on("value", snapshot => {
+      .on("value", (snapshot) => {
         this.productList2 = snapshot.val();
-        this.progressBar = true
+        this.progressBar = true;
         this.productListLength2 = Object.keys(snapshot.val()).length;
       });
   },
@@ -240,19 +292,19 @@ export default {
       } else {
         firebase
           .database()
-          .ref('hlm_home_customer_review_1')
+          .ref("hlm_home_customer_review_1")
           .push({
             title: this.title,
             address: this.address,
             message: this.message,
-            img1_url: this.img1_url
+            img1_url: this.img1_url,
           })
-          .then(data => {
+          .then((data) => {
             console.log(data.path.pieces_[1]);
             (this.title = ""), (this.address = ""), (this.message = "");
-            this.addItem()
+            this.addItem();
           })
-          .catch(error => console.log(error));
+          .catch((error) => console.log(error));
       }
     },
     onUpload() {
@@ -264,16 +316,16 @@ export default {
         .put(this.imageData);
       storageRef.on(
         `state_changed`,
-        snapshot => {
+        (snapshot) => {
           this.uploadValue =
             (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
         },
-        error => {
+        (error) => {
           console.log(error.message);
         },
         () => {
           this.uploadValue = 100;
-          storageRef.snapshot.ref.getDownloadURL().then(url => {
+          storageRef.snapshot.ref.getDownloadURL().then((url) => {
             this.picture = url;
             this.img1_url = url;
             console.log(this.img1_url);
@@ -288,15 +340,12 @@ export default {
       this.imageData = event.target.files[0];
     },
     removeItem() {
-      firebase
-        .database()
-        .ref("hlm_home_customer_review_1")
-        .remove();
-        window.location.reload()
+      firebase.database().ref("hlm_home_customer_review_1").remove();
+      window.location.reload();
     },
 
     // Review 2
-    
+
     // Adding new content
     onSubmit2() {
       if (
@@ -317,19 +366,19 @@ export default {
       } else {
         firebase
           .database()
-          .ref('hlm_home_customer_review_2')
+          .ref("hlm_home_customer_review_2")
           .push({
             title2: this.title2,
             address2: this.address2,
             message2: this.message2,
-            img1_url2: this.img1_url2
+            img1_url2: this.img1_url2,
           })
-          .then(data => {
+          .then((data) => {
             console.log(data.path.pieces_[1]);
             (this.title2 = ""), (this.address2 = ""), (this.message2 = "");
-            this.addItem2()
+            this.addItem2();
           })
-          .catch(error => console.log(error));
+          .catch((error) => console.log(error));
       }
     },
     onUpload2() {
@@ -341,16 +390,16 @@ export default {
         .put(this.imageData2);
       storageRef.on(
         `state_changed`,
-        snapshot => {
+        (snapshot) => {
           this.uploadValue2 =
             (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
         },
-        error => {
+        (error) => {
           console.log(error.message);
         },
         () => {
           this.uploadValue2 = 100;
-          storageRef.snapshot.ref.getDownloadURL().then(url => {
+          storageRef.snapshot.ref.getDownloadURL().then((url) => {
             this.picture2 = url;
             this.img1_url2 = url;
             console.log(this.img1_url2);
@@ -365,13 +414,10 @@ export default {
       this.imageData2 = event.target.files[0];
     },
     removeItem2() {
-      firebase
-        .database()
-        .ref("hlm_home_customer_review_2")
-        .remove();
-        window.location.reload()
-    }
-  }
+      firebase.database().ref("hlm_home_customer_review_2").remove();
+      window.location.reload();
+    },
+  },
 };
 </script>
 
@@ -395,6 +441,7 @@ export default {
   margin: 20px;
   height: 450px;
   position: relative;
+    height: auto;
 }
 .membership {
   display: inline-block;
@@ -475,7 +522,7 @@ export default {
 }
 
 /* Dynamic */
-.customers-reviews .add-product-section, 
+.customers-reviews .add-product-section,
 .customers-reviews .remove-product-section {
   position: absolute;
   top: 10px;
@@ -485,55 +532,87 @@ export default {
 .customers-reviews .add-product-section {
   right: 40px;
 }
-.customers-reviews .add-product-section img, 
+.customers-reviews .add-product-section img,
 .customers-reviews .remove-product-section img {
   width: 25px;
   height: 25px;
 }
 .add-form {
-    position: absolute;
-    background-image: url("../../assets/images/bg.png");
-    top: 50px;
-    text-align: left;
-    padding: 4px;
-    border-radius: 4px;
-    background-size: cover;
+  position: absolute;
+  background-image: url("../../assets/images/bg.png");
+  top: 50px;
+  text-align: left;
+  padding: 4px;
+  border-radius: 4px;
+  background-size: cover;
 }
 .review-form {
-    font-size: 18px;
-    border: 2px solid #000;
-    padding: 4px;
-    border-radius: 4px;
+  font-size: 18px;
+  border: 2px solid #000;
+  padding: 4px;
+  border-radius: 4px;
 }
-.field-input, .field-textarea {
-    border: 1px solid #000;
-    border-radius: 4px;
-    margin: 6px 0;
-    padding: 4px;
-    width: 100%;
+.field-input,
+.field-textarea {
+  border: 1px solid #000;
+  border-radius: 4px;
+  margin: 6px 0;
+  padding: 4px;
+  width: 100%;
 }
 .field-textarea {
-    min-height: 100px;
+  min-height: 100px;
 }
 .add-form .submit-btn {
-    border: 2px solid #000;
-    border-radius: 10px;
-    padding: 4px;
-    width: 50%;
-    margin: 0 auto;
-    display: block;
-    font-weight: bold;
-    color: #000;
+  border: 2px solid #000;
+  border-radius: 10px;
+  padding: 4px;
+  width: 50%;
+  margin: 0 auto;
+  display: block;
+  font-weight: bold;
+  color: #000;
 }
 .img-up-btn {
-    border: 1px solid #272727;
-    border-radius: 10px;
-    padding: 4px;
-    width: 30%;
-    text-align: center;
+  border: 1px solid #272727;
+  border-radius: 10px;
+  padding: 4px;
+  width: 30%;
+  text-align: center;
+  display: block;
+  font-weight: bold;
+  color: #000;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 1050px) {
+  .review-card-one,
+  .review-card-two {
+    width: 80%;
     display: block;
-    font-weight: bold;
-    color: #000;
-    cursor: pointer;
+    margin: 0 auto;
+    height: auto;
+  }
+  .membership {
+    width: 80%;
+    display: block;
+    margin: 10px auto;
+    height: auto;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .membership-inner {
+    padding: 20px 40px;
+  }
+  .membership h1 {
+    font-size: 24px;
+  }
+  .membership p {
+    font-size: 20px;
+  }
+  .learn-more-btn {
+    margin: 0;
+  }
 }
 </style>
