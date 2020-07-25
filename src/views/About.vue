@@ -358,9 +358,26 @@ export default {
 }
 
 @media screen and (max-width: 768px) {
+  .section-one {
+    padding: 10px;
+  }
+  .section-two-inner .speaker-section[data-v-039c5b43],
+  .section-two-inner .customer-section[data-v-039c5b43] {
+    display: block;
+    width: 100%;
+    text-align: center;
+    margin: 0 auto;
+  }
+  .section-three .img-inner,
+  .s3-text-section {
+    width: 100%;
+  }
 }
 
 @media screen and (max-width: 550px) {
+  .certificate-section {
+    width: 100%;
+  }
   .certificate-section .icon {
     width: 100%;
     text-align: center;
@@ -375,14 +392,26 @@ export default {
   .certificate-section .certificate-view {
     text-align: center;
   }
+  .desc-title {
+    font-size: 26px;
+  }
+  .speaker-text {
+    font-size: 20px;
+  }
+  .counter-number {
+    font-size: 30px;
+  }
+  .elementor-counter-title {
+    font-size: 16px;
+  }
+  .desc-section .promice-section p {
+    font-size: 22px;
+  }
+  .desc-section ul {
+    font-size: 18px;
+  }
 }
 
 @media screen and (max-width: 491px) {
-  .section-two-inner .speaker-section[data-v-039c5b43],
-  .section-two-inner .customer-section[data-v-039c5b43] {
-    display: block;
-    width: 100%;
-    text-align: center;
-  }
 }
 </style>

@@ -456,11 +456,16 @@ input {
   .title {
     font-size: 26px;
   }
-  .blog-title[data-v-2bd0d7f6] {
-    font-size: 20px;
+  .blog-title {
+    font-size: 18px;
+    margin: 0 0 10px;
   }
   .blog-txt-btn .description {
     font-size: 16px;
+    margin: 4px 0;
+  }
+  .blog-section {
+    padding: 0 8px;
   }
 }
 </style>
